@@ -469,14 +469,14 @@ void matrix_scan_user(void) {
     case LAYER_KEYMACS:
 	  //      rgblight_task();
 	  if (old_layer == LAYER_RUSSIAN) {
-		register_code(KC_LALT); // switch to English
-		unregister_code(KC_LALT); // switch to English
+		register_code(KC_LCTL); // switch to English
+		unregister_code(KC_LCTL); // switch to English
 	  }
 	  rgblight_show_solid_color(0,0,0);
       break;      
     case LAYER_RUSSIAN:
-	  register_code(KC_RALT); // switch to Russian
-	  unregister_code(KC_RALT); // switch to Russian
+	  register_code(KC_RCTL); // switch to Russian
+	  unregister_code(KC_RCTL); // switch to Russian
       ergodox_right_led_1_on();
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0xff,0x00,0xff);
