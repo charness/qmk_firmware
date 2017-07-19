@@ -11,8 +11,11 @@
 #define _____ KC_TRANSPARENT
 #define XXXXX KC_NO
 
+// Switchers
 #define RUS KC_SCROLLLOCK
 #define LAT KC_SCROLLLOCK
+#define LV3 KC_CAPSLOCK
+#define XKBSTR "setxkbmap -layout \"us,ru(typewriter)\" -option grp:sclk_toggle -option lv3:caps_switch -option misc:typo"
 
 // Layer names
 enum {
@@ -34,6 +37,7 @@ enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here  
   EPRM,
   VRSN,
+  XKBHELP,  
   RGB_SLD,
   RGB_0000FF,
   RGB_008000,
@@ -44,8 +48,7 @@ enum custom_keycodes {
 
 // Macros IDs
 enum {
-  M_VRSN = 0,
-  M_EMACS_SELECT,
+  M_EMACS_SELECT = 0,
   M_LAYER_IS_KEYMACS,
   M_LAYER_IS_AUXCHARS,
   M_LAYER_IS_RUSSIAN,
@@ -58,8 +61,6 @@ enum {
   M_LAYER_IS_MEDIA,
   M_LAYER_IS_SYMBOLS,
   M_LAYER_IS_WM,
-  M_RUS,
-  M_LAT
 };
 
 //Tap Dance Declarations
@@ -118,7 +119,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_AUXCHARS] = KEYMAP(// left fingers
-			  M(M_VRSN),KC_GRAVE,KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,_____,
+			  VRSN,KC_GRAVE,KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,_____,
 			  KC_LALT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
 			  KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
 			  KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
@@ -187,7 +188,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_AUXCHARS_RU] = KEYMAP(// left fingers
-			  M(M_VRSN),KC_GRAVE,KC_9,KC_2,KC_6,KC_PLUS,_____,
+			  XKBHELP,KC_GRAVE,KC_9,KC_2,KC_6,KC_PLUS,_____,
 			  KC_LT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
 			  KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
 			  KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
@@ -341,23 +342,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // Window manager control (i3 currently)
   [LAYER_WM] = KEYMAP(// left fingers
-		      _____,LSFT(LGUI(KC_9)),LSFT(LGUI(KC_7)),LSFT(LGUI(KC_1)),LSFT(LGUI(KC_3)),LSFT(LGUI(KC_5)),_____,
-		      _____,LGUI(KC_9),LGUI(KC_7),LGUI(KC_1),LGUI(KC_3),LGUI(KC_5),_____,
-		      _____,LGUI(KC_R),_____,LGUI(KC_UP),LGUI(KC_DOWN),LGUI(KC_F10),
-		      _____,LGUI(KC_Z),_____,_____,_____,LGUI(KC_J),LGUI(KC_F11),
-		      TO(LAYER_KEYMACS),_____,_____,_____,_____,
-		      // left thumb
-		      _____,_____,_____,
-		      LGUI(KC_SPACE),KC_ENTER,_____,
-		      // right fingers
-		      M(M_LAYER_IS_SYMBOLS),LSFT(RGUI(KC_6)),LSFT(RGUI(KC_2)),LSFT(RGUI(KC_0)),LSFT(RGUI(KC_4)),LSFT(RGUI(KC_8)),LGUI(KC_F9),
-		      _____,RGUI(KC_6),RGUI(KC_2),RGUI(KC_0),RGUI(KC_4),RGUI(KC_8),LGUI(KC_F7),
-		      LGUI(KC_F12),RGUI(KC_LEFT),RGUI(KC_RIGHT),_____,_____,LGUI(KC_F6),
-		      LGUI(KC_F11),_____,_____,RGUI(KC_X),_____,_____,LGUI(KC_F5),
-		      _____,_____,_____,_____,_____,
-		      // right thumb
-		      _____,_____,_____,
-		      _____,KC_ENTER,RGUI(KC_SPACE)),
+					  XKBHELP,LSFT(LGUI(KC_9)),LSFT(LGUI(KC_7)),LSFT(LGUI(KC_1)),LSFT(LGUI(KC_3)),LSFT(LGUI(KC_5)),_____,
+					  _____,LGUI(KC_9),LGUI(KC_7),LGUI(KC_1),LGUI(KC_3),LGUI(KC_5),_____,
+					  _____,LGUI(KC_R),_____,LGUI(KC_UP),LGUI(KC_DOWN),LGUI(KC_F10),
+					  _____,LGUI(KC_Z),_____,_____,_____,LGUI(KC_J),LGUI(KC_F11),
+					  TO(LAYER_KEYMACS),_____,_____,_____,_____,
+					  // left thumb
+					  _____,_____,_____,
+					  LGUI(KC_SPACE),KC_ENTER,_____,
+					  // right fingers
+					  M(M_LAYER_IS_SYMBOLS),LSFT(RGUI(KC_6)),LSFT(RGUI(KC_2)),LSFT(RGUI(KC_0)),LSFT(RGUI(KC_4)),LSFT(RGUI(KC_8)),LGUI(KC_F9),
+					  _____,RGUI(KC_6),RGUI(KC_2),RGUI(KC_0),RGUI(KC_4),RGUI(KC_8),LGUI(KC_F7),
+					  LGUI(KC_F12),RGUI(KC_LEFT),RGUI(KC_RIGHT),_____,_____,LGUI(KC_F6),
+					  LGUI(KC_F11),_____,_____,RGUI(KC_X),_____,_____,LGUI(KC_F5),
+					  _____,_____,_____,_____,_____,
+					  // right thumb
+					  _____,_____,_____,
+					  _____,KC_ENTER,RGUI(KC_SPACE)),
 
 };
 
@@ -373,9 +374,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
   switch(id) {
   case M_EMACS_SELECT: // Emacs: reset the selection and activate a new one
     return MACRO(D(LCTL),T(G),T(SPC),U(LCTL),END);
-  case M_VRSN:
-    SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION "-Keymacs");
-    break;
   case M_LAYER_IS_KEYMACS:
     SEND_STRING ("Layer is Keymacs [0]");
     break;
@@ -427,6 +425,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case VRSN:
 	if (record->event.pressed) {
 	  SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+	}
+	return false;
+	break;
+  case XKBHELP:
+	if (record->event.pressed) {
+	  SEND_STRING (XKBSTR);
 	}
 	return false;
 	break;
