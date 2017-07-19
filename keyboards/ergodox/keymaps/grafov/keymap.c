@@ -69,7 +69,7 @@ enum {
 //Tap Dance Declarations
 enum {
   TD_QU = 0,
-  TD_EYO,
+  TD_GRAVEACCENT,
   TD_SHSIG,
   TD_ASSIGN,
   TD_LELKILAPKI,
@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_KEYMACS] = KEYMAP( // left fingers
-						   KC_ESCAPE,KC_GRAVE,KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,TG(LAYER_NUMPAD),
+						   KC_ESCAPE,TD(TD_GRAVEACCENT),KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,TG(LAYER_NUMPAD),
 						   KC_LALT,TD(TD_QU),KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 						   KC_LCTL,LT(LAYER_AUXCHARS,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 						   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_COMMA,KC_U,KC_K,SFT_T(KC_J),M(M_EMACS_SELECT),
@@ -143,23 +143,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_AUXCHARS] = KEYMAP(// left fingers
-			  VRSN,KC_GRAVE,KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,_____,
-			  KC_LALT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
-			  KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
-			  KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
-			  _____,_____,_____,_____,_____,
-			  // left thumb
-			  _____,_____,_____,
-			  LT(LAYER_CONTROL,KC_SPACE),_____,_____,
-			  // right fingers
-			  M(M_LAYER_IS_AUXCHARS),KC_ASTR,KC_SCOLON,KC_DQUO,KC_EXLM,KC_EQUAL,_____,
-			  _____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,KC_NO,KC_RALT,
-			  KC_NO,KC_RPRN,KC_RCBR,KC_UNDS,KC_NO,KC_RCTRL,
-			  _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
-			  _____,_____,_____,_____,_____,
-			  // right thumb
-			  _____,_____,_____,
-			  _____,_____,LT(LAYER_CONTROL,KC_SPACE)),
+							VRSN,TD(TD_GRAVEACCENT),KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,_____,
+							KC_LALT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
+							KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
+							KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
+							_____,_____,_____,_____,_____,
+							// left thumb
+							_____,_____,_____,
+							LT(LAYER_CONTROL,KC_SPACE),_____,_____,
+							// right fingers
+							M(M_LAYER_IS_AUXCHARS),KC_ASTR,KC_SCOLON,KC_DQUO,KC_EXLM,KC_EQUAL,_____,
+							_____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,KC_NO,KC_RALT,
+							KC_NO,KC_RPRN,KC_RCBR,KC_UNDS,KC_NO,KC_RCTRL,
+							_____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
+							_____,_____,_____,_____,_____,
+							// right thumb
+							_____,_____,_____,
+							_____,_____,LT(LAYER_CONTROL,KC_SPACE)),
 
 /* Russian layout
  *
@@ -625,6 +625,22 @@ void matrix_scan_user(void) {
 	old_layer = layer;
 };
 
+// Grave vs accent sign
+void dance_graveaccent (qk_tap_dance_state_t *state, void *user_data) {
+  switch (state->count) {
+    case 1:
+	  TAP(KC_GRAVE);
+      break;
+    case 2:
+	  register_code(LV3);
+	  TAP(KC_A);	  
+	  unregister_code(LV3);	  	  
+      break;
+    default:
+      reset_tap_dance(state);
+  }
+}
+
 // Q or QU experiment
 void dance_qu (qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
@@ -712,7 +728,7 @@ void dance_assign (qk_tap_dance_state_t *state, void *user_data) {
 //Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_QU]  = ACTION_TAP_DANCE_FN(dance_qu),
-  [TD_EYO] = ACTION_TAP_DANCE_FN(dance_eyo),
+  [TD_GRAVEACCENT]  = ACTION_TAP_DANCE_FN(dance_graveaccent),  
   [TD_SHSIG] = ACTION_TAP_DANCE_FN(dance_shsig),
   [TD_ASSIGN] = ACTION_TAP_DANCE_FN(dance_assign),
   [TD_LELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_left),
