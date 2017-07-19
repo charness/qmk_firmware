@@ -11,6 +11,9 @@
 #define _____ KC_TRANSPARENT
 #define XXXXX KC_NO
 
+#define RUS KC_RCTL
+#define LAT KC_LCTL
+
 // Layer names
 enum {
   LAYER_KEYMACS = 0,
@@ -29,8 +32,6 @@ enum {
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here  
-  LAT,
-  RUS,  
   EPRM,
   VRSN,
   RGB_SLD,
@@ -90,26 +91,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 						   OSL(LAYER_FN),ALT_T(KC_DOT),KC_W,KC_D,KC_Y,KC_QUOTE,KC_RALT,
 						   CTL_T(KC_L),KC_O,KC_T,KC_I,LT(LAYER_AUXCHARS,KC_H),KC_RCTL,
 						   _____,SFT_T(KC_M),KC_C,KC_X,KC_V,LT(LAYER_NUMPAD,KC_SLASH),KC_RSHIFT,
-						   MO(LAYER_MOUSE),KC_UNDS,_____,MO(LAYER_WM),TO(LAYER_RUSSIAN),
+						   MO(LAYER_MOUSE),KC_UNDS,_____,MO(LAYER_WM),TT(LAYER_RUSSIAN),
 						   // right thumb
 						   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
 						   ALT_T(KC_APPLICATION),GUI_T(KC_TAB),LT(LAYER_CONTROL,KC_ENTER)),
-  
+
   // Programmer layer (various shifted characters)
   [LAYER_AUXCHARS] = KEYMAP(// left fingers
 			  M(M_VRSN),KC_GRAVE,KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,_____,
-			  KC_LALT,_____,KC_CIRC,KC_HASH,KC_LBRACKET,_____,_____,
-			  KC_LCTL,_____,KC_AMPR,KC_LCBR,KC_LPRN,_____,
-			  KC_LSHIFT,_____,KC_LABK,KC_TILD,KC_AT,_____,_____,
+			  KC_LALT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
+			  KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
+			  KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
 			  _____,_____,_____,_____,_____,
 			  // left thumb
 			  _____,_____,_____,
 			  LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 			  // right fingers
 			  M(M_LAYER_IS_AUXCHARS),KC_ASTR,KC_SCOLON,KC_DQUO,KC_EXLM,KC_EQUAL,_____,
-			  _____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,_____,KC_RALT,
-			  _____,KC_RPRN,KC_RCBR,KC_UNDS,_____,KC_RCTRL,
-			  _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,_____,KC_RSHIFT,
+			  _____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,KC_NO,KC_RALT,
+			  KC_NO,KC_RPRN,KC_RCBR,KC_UNDS,KC_NO,KC_RCTRL,
+			  _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
 			  _____,_____,_____,_____,_____,
 			  // right thumb
 			  _____,_____,_____,
@@ -132,8 +133,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			  KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
 			  TO(LAYER_KEYMACS),_____,_____,_____,_____,
 			  // left thumb
-			  _____,_____,_____,
-			  _____,_____,_____,
+			  LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
+			  LT(LAYER_CONTROL,KC_SPACE),GUI_T(KC_BSPACE),KC_MINUS,
 			  // right fingers
 			  M(M_LAYER_IS_RUSSIAN),_____,KC_7,KC_LBRACKET,KC_MINUS,_____,_____,
 			  _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
@@ -141,24 +142,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			  _____,SFT_T(KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_NUMPAD,KC_QUOTE),KC_RSHIFT,
 			  _____,_____,_____,_____,_____,
 			  // right thumb
-			  _____,_____,_____,
-			  _____,_____,_____),
-
+			  KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
+			  ALT_T(KC_APPLICATION),GUI_T(KC_TAB),LT(LAYER_CONTROL,KC_ENTER)),
+    
   // Copy of Programmer layer but when Russian layout is turned on it should map chars in other way
   [LAYER_AUXCHARS_RU] = KEYMAP(// left fingers
 			  M(M_VRSN),KC_GRAVE,KC_9,KC_2,KC_6,KC_PLUS,_____,
-			  KC_LALT,KC_1,KC_CIRC,KC_HASH,KC_LBRACKET,_____,_____,
-			  KC_LCTL,_____,KC_AMPR,KC_LCBR,LSFT(KC_BSLASH),_____,
-			  KC_LSHIFT,_____,KC_LABK,KC_TILD,KC_AT,_____,_____,
+			  KC_LT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
+			  KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
+			  KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
 			  _____,_____,_____,_____,_____,
 			  // left thumb
 			  _____,_____,_____,
 			  LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 			  // right fingers
-			  M(M_LAYER_IS_AUXCHARS),_____,KC_7,KC_LBRACKET,KC_MINUS,KC_EQUAL,_____,
-			  _____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,_____,KC_RALT,
-			  _____,KC_BSLASH,KC_RCBR,KC_UNDS,_____,KC_RCTRL,
-			  _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,_____,KC_RSHIFT,
+			  M(M_LAYER_IS_AUXCHARS),KC_NO,KC_7,KC_LBRACKET,KC_MINUS,KC_EQUAL,_____,
+			  _____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,KC_NO,KC_RALT,
+			  KC_NO,KC_RPRN,KC_RCBR,KC_UNDS,KC_NO,KC_RCTRL,
+			  _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
 			  _____,_____,_____,_____,_____,
 			  // right thumb
 			  _____,_____,_____,
@@ -469,20 +470,24 @@ void matrix_scan_user(void) {
     case LAYER_KEYMACS:
 	  //      rgblight_task();
 	  if (old_layer == LAYER_RUSSIAN) {
-		register_code(KC_LCTL); // switch to English
-		unregister_code(KC_LCTL); // switch to English
+		register_code(LAT); // switch to English
+		unregister_code(LAT);
 	  }
 	  rgblight_show_solid_color(0,0,0);
       break;      
     case LAYER_RUSSIAN:
-	  register_code(KC_RCTL); // switch to Russian
-	  unregister_code(KC_RCTL); // switch to Russian
+	  register_code(RUS); // switch to Russian
+	  unregister_code(RUS);
       ergodox_right_led_1_on();
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0xff,0x00,0xff);
       break;
     case LAYER_AUXCHARS:
     case LAYER_AUXCHARS_RU:	  
+	  if (old_layer == LAYER_RUSSIAN) {
+		register_code(LAT); // switch to English
+		unregister_code(LAT);
+	  }	  
       ergodox_right_led_2_on();
       rgblight_show_solid_color(0x00,0xff,0x00);      
       break;
@@ -492,10 +497,18 @@ void matrix_scan_user(void) {
 	  rgblight_effect_christmas();
       break;
     case LAYER_NUMPAD:
+	  if (old_layer == LAYER_RUSSIAN) {
+		register_code(LAT); // switch to English
+		unregister_code(LAT);
+	  }	  
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0x00,0x00,0xff);      
       break;
     case LAYER_CONTROL:
+	  if (old_layer == LAYER_RUSSIAN) {
+		register_code(LAT); // switch to English
+		unregister_code(LAT);
+	  }	  
       ergodox_right_led_1_on();
       rgblight_show_solid_color(0xff,0x00,0x00);
       break;
@@ -505,6 +518,10 @@ void matrix_scan_user(void) {
       rgblight_show_solid_color(0x00,0xff,0xff);
       break;
     case LAYER_WM:
+	  if (old_layer == LAYER_RUSSIAN) {
+		register_code(LAT); // switch to English
+		unregister_code(LAT);
+	  }	  
       ergodox_right_led_1_on();
       ergodox_right_led_2_on();
       ergodox_right_led_3_on();
