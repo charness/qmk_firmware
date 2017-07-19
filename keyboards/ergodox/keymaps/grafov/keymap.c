@@ -17,6 +17,8 @@
 #define LV3 KC_CAPSLOCK
 #define XKBSTR "setxkbmap -layout \"us,ru(typewriter)\" -option grp:sclk_toggle -option lv3:caps_switch -option misc:typo"
 
+#define TAP(kc) register_code(kc);unregister_code(kc)
+
 // Layer names
 enum {
   LAYER_KEYMACS = 0,
@@ -32,7 +34,8 @@ enum {
   LAYER_SYMBOLS,
   LAYER_WM
 };
-
+// ¹²²³$‰↑&∞←→—≠йц€®™¥гшщ´[́§°§§°°]][[¹[[йй[й]])́́́§§§́́́§§́́́§§§́́́§§§́§́́́́́́§§ф§§°£пр„“„“„“„“”“„“”“”‘„“”„“”‘’я×©↓ит−«»…
+								  
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here  
   EPRM,
@@ -68,16 +71,37 @@ enum {
   TD_QU = 0,
   TD_EYO,
   TD_SHSIG,
-  TD_ASSIGN
+  TD_ASSIGN,
+  TD_LELKILAPKI,
+  TD_RELKILAPKI,
 };
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  // Default layer based on Keymacs layout
-  // -------------------------------------
-  // This is the adaptation of the layout for common keyboards for Ergodox EZ
-  // https://github.com/keyboard-ergonomics/keymacs
+/* Default layer based on Keymacs layout
+ * This is the adaptation of the layout for common keyboards for Ergodox EZ
+ * https://github.com/keyboard-ergonomics/keymacs
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |   Esc  |   `  |   ?  |   -  |   :  |   +  |      |           |      |   *  |   ;  |   "  |   !  |   =  |   BSP  |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |   Alt  |   q  |   b  |   p  |   f  |   g  |      |           |      |   .  |   w  |   d  |   y  |   '  |   Alt  |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |   Ctl  |   r  |   a  |   e  |   n  |   s  |------|           |------|   l  |   o  |   t  |   i  |   h  |   Ctl  |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |  Shift |   z  |   ,  |   u  |   k  |   j  |      |           |      |   m  |   c  |   x  |   v  |   /  |  Shift |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |   _  |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */    
   [LAYER_KEYMACS] = KEYMAP( // left fingers
 						   KC_ESCAPE,KC_GRAVE,KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,TG(LAYER_NUMPAD),
 						   KC_LALT,TD(TD_QU),KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
@@ -111,11 +135,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |TOG   |
+ *                                        |      |      |       |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |VAI   |VAD   |HUI   |       |SAI   |      |MOD   |
+ *                                 |      |      |      |       |      |      |      |
  *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |HUD   |       |SAD   |      |      |
+ *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_AUXCHARS] = KEYMAP(// left fingers
@@ -137,34 +161,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			  _____,_____,_____,
 			  _____,_____,LT(LAYER_CONTROL,KC_SPACE)),
 
-  // QWERTY for Russian Typewriter layout adapted for Ergodox
-  // --------------------------------------------------------
-  // Х moved to top for right index finger
-  // Э moved to down for right pinky
-  // Tap dance:
-  // - double-tap for Ь produces Ъ
-  // - unresovled because RCTL_T: double-tap for Е should produce Ё but not yet
-  //
-  // It has used shift-shift switcher (https://github.com/grafov/shift-shift).
-  // Top row chars: [хз] [?] [-] [,] [хз]    [хз] [.] [х] [!] [хз]
+/* Russian layout
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |  «/„ |   ?  |   -  |   ,  |   ё  |      |           |      |   8  |   .  |   х  |   !  |  »/“ |   BSP  |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |   й  |   ц  |   у  |   к  |   е  |      |           |      |   н  |   г  |   ш  |   щ  |   з  |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   ф  |   ы  |   в  |   а  |   п  |------|           |------|   р  |   о  |   л  |   д  |   ж  |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   я  |   ч  |   с  |   м  |   и  |      |           |      |   т  |  ь/ъ |   б  |   ю  |   э  |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */    
+  /* QWERTY for Russian Typewriter layout adapted for Ergodox */
+  /* -------------------------------------------------------- */
+  /* Х moved to top for right index finger */
+  /* Э moved to down for right pinky */
+  /* Tap dance: */
+  /* - double-tap for Ь produces Ъ */
+  /* - unresovled because RCTL_T: double-tap for Е should produce Ё but not yet */
+  
+  /* It has used shift-shift switcher (https://github.com/grafov/shift-shift). */
   [LAYER_RUSSIAN] = KEYMAP(// left fingers
-			  KC_ESCAPE,_____,KC_9,KC_2,KC_6,_____,_____,
-			  KC_LALT,KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
-			  KC_LCTL,LT(LAYER_AUXCHARS_RU,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
-			  KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
-			  TO(LAYER_KEYMACS),_____,_____,_____,_____,
-			  // left thumb
-			  LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
-			  LT(LAYER_CONTROL,KC_SPACE),GUI_T(KC_BSPACE),KC_MINUS,
-			  // right fingers
-			  M(M_LAYER_IS_RUSSIAN),_____,KC_7,KC_LBRACKET,KC_MINUS,_____,_____,
-			  _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
-			  LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_AUXCHARS_RU,KC_SCOLON),KC_RCTL,
-			  _____,SFT_T(KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_NUMPAD,KC_QUOTE),KC_RSHIFT,
-			  _____,_____,_____,_____,_____,
-			  // right thumb
-			  KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
-			  ALT_T(KC_APPLICATION),GUI_T(KC_TAB),LT(LAYER_CONTROL,KC_ENTER)),
+						   KC_ESCAPE,TD(TD_LELKILAPKI),KC_9,KC_2,KC_6,KC_SLASH,_____,
+						   KC_LALT,KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
+						   KC_LCTL,LT(LAYER_AUXCHARS_RU,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
+						   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
+						   TO(LAYER_KEYMACS),_____,_____,_____,_____,
+						   // left thumb
+						   LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
+						   LT(LAYER_CONTROL,KC_SPACE),GUI_T(KC_BSPACE),KC_MINUS,
+						   // right fingers
+						   M(M_LAYER_IS_RUSSIAN),_____,KC_7,KC_LBRACKET,KC_MINUS,TD(TD_RELKILAPKI),_____,
+						   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
+						   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_AUXCHARS_RU,KC_SCOLON),KC_RCTL,
+						   _____,SFT_T(KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_NUMPAD,KC_QUOTE),KC_RSHIFT,
+						   _____,_____,_____,_____,_____,
+						   // right thumb
+						   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
+						   ALT_T(KC_APPLICATION),GUI_T(KC_TAB),LT(LAYER_CONTROL,KC_ENTER)),
 
 /* Symbol Layer for Russian layout
  *
@@ -233,7 +277,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			   _____,_____,_____,KC_LGUI,KC_LALT,
 			   // left thumb
 			   _____,_____,_____,
-			   KC_SPACE,KC_ENTER,_____,
+			  KC_SPACE,KC_ENTER,_____,
 			   // right fingers
 			   M(M_LAYER_IS_QWERTY),KC_6,KC_7,KC_8,KC_9,KC_0,KC_BSPACE,
 			   KC_TAB,KC_Y,KC_U,KC_I,KC_O,KC_P,KC_LALT,
@@ -599,14 +643,36 @@ void dance_qu (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
-// Е/Ё для русской раскладки
-void dance_eyo (qk_tap_dance_state_t *state, void *user_data) {
+// «/„ для русской раскладки
+void dance_elkilapki_left (qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
     case 1:
-	  // XXX
+	  register_code(LV3);
+	  TAP(KC_COMMA);
+	  unregister_code(LV3);	  	  
       break;
     case 2:
-	  // XXX
+	  register_code(LV3);
+	  TAP(KC_J);	  
+	  unregister_code(LV3);	  	  
+      break;
+    default:
+      reset_tap_dance(state);
+  }
+}
+
+// »/“ для русской раскладки
+void dance_elkilapki_right (qk_tap_dance_state_t *state, void *user_data) {
+  switch (state->count) {
+    case 1:
+	  register_code(LV3);
+	  TAP(KC_DOT);
+	  unregister_code(LV3);	  
+      break;
+    case 2:
+	  register_code(LV3);
+	  TAP(KC_K);	  
+	  unregister_code(LV3);	  
       break;
     default:
       reset_tap_dance(state);
@@ -649,4 +715,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_EYO] = ACTION_TAP_DANCE_FN(dance_eyo),
   [TD_SHSIG] = ACTION_TAP_DANCE_FN(dance_shsig),
   [TD_ASSIGN] = ACTION_TAP_DANCE_FN(dance_assign),
+  [TD_LELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_left),
+  [TD_RELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_right),
 };
