@@ -34,8 +34,8 @@ enum {
   LAYER_SYMBOLS,
   LAYER_WM
 };
-// ¹²²³$‰↑&∞←→—≠йц€®™¥гшщ´[́§°§§°°]][[¹[[йй[й]])́́́§§§́́́§§́́́§§§́́́§§§́§́́́́́́§§ф§§°£пр„“„“„“„“”“„“”“”‘„“”„“”‘’я×©↓ит−«»…
-								  
+// ¹²²³$‰↑&∞←→’‘¹²³$‰↑&∞←→—≠йц€®™¥гшщ´[́§
+
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here  
   EPRM,
@@ -69,6 +69,7 @@ enum {
 //Tap Dance Declarations
 enum {
   TD_QU = 0,
+  TD_DASH,
   TD_GRAVEACCENT,
   TD_SHSIG,
   TD_ASSIGN,
@@ -103,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_KEYMACS] = KEYMAP( // left fingers
-						   KC_ESCAPE,TD(TD_GRAVEACCENT),KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,TG(LAYER_NUMPAD),
+						   KC_ESCAPE,TD(TD_GRAVEACCENT),KC_QUES,TD(TD_DASH),TD(TD_ASSIGN),KC_PLUS,TG(LAYER_NUMPAD),
 						   KC_LALT,TD(TD_QU),KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 						   KC_LCTL,LT(LAYER_AUXCHARS,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 						   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_COMMA,KC_U,KC_K,SFT_T(KC_J),M(M_EMACS_SELECT),
@@ -143,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_AUXCHARS] = KEYMAP(// left fingers
-							VRSN,TD(TD_GRAVEACCENT),KC_QUES,KC_MINUS,TD(TD_ASSIGN),KC_PLUS,_____,
+							VRSN,TD(TD_GRAVEACCENT),KC_QUES,TD(TD_DASH),TD(TD_ASSIGN),KC_PLUS,_____,
 							KC_LALT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
 							KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
 							KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
@@ -192,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   
   /* It has used shift-shift switcher (https://github.com/grafov/shift-shift). */
   [LAYER_RUSSIAN] = KEYMAP(// left fingers
-						   KC_ESCAPE,TD(TD_LELKILAPKI),KC_9,KC_2,KC_6,KC_SLASH,_____,
+						   KC_ESCAPE,TD(TD_LELKILAPKI),KC_9,TD(TD_DASH),KC_6,KC_SLASH,_____,
 						   KC_LALT,KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
 						   KC_LCTL,LT(LAYER_AUXCHARS_RU,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
 						   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
@@ -232,23 +233,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_AUXCHARS_RU] = KEYMAP(// left fingers
-			  XKBHELP,KC_GRAVE,KC_9,KC_2,KC_6,KC_PLUS,_____,
-			  KC_LT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
-			  KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
-			  KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
-			  _____,_____,_____,_____,_____,
-			  // left thumb
-			  _____,_____,_____,
-			  LT(LAYER_CONTROL,KC_SPACE),_____,_____,
-			  // right fingers
-			  M(M_LAYER_IS_AUXCHARS),KC_NO,KC_7,KC_LBRACKET,KC_MINUS,KC_EQUAL,_____,
-			  _____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,KC_NO,KC_RALT,
-			  KC_NO,KC_RPRN,KC_RCBR,KC_UNDS,KC_NO,KC_RCTRL,
-			  _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
-			  _____,_____,_____,_____,_____,
-			  // right thumb
-			  _____,_____,_____,
-			  _____,_____,LT(LAYER_CONTROL,KC_SPACE)),
+							   XKBHELP,KC_GRAVE,KC_9,TD(TD_DASH),KC_6,KC_PLUS,_____,
+							   KC_LT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
+							   KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
+							   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
+							   _____,_____,_____,_____,_____,
+							   // left thumb
+							   _____,_____,_____,
+							   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
+							   // right fingers
+							   M(M_LAYER_IS_AUXCHARS),KC_NO,KC_7,KC_LBRACKET,KC_MINUS,KC_EQUAL,_____,
+							   _____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,KC_NO,KC_RALT,
+							   KC_NO,KC_RPRN,KC_RCBR,KC_UNDS,KC_NO,KC_RCTRL,
+							   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
+							   _____,_____,_____,_____,_____,
+							   // right thumb
+							   _____,_____,_____,
+							   _____,_____,LT(LAYER_CONTROL,KC_SPACE)),
 
   // Mouse control
   [LAYER_MOUSE] = KEYMAP(// left fingers
@@ -659,6 +660,22 @@ void dance_qu (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
+// -/— minus or emdash
+void dance_dash (qk_tap_dance_state_t *state, void *user_data) {
+  switch (state->count) {
+    case 1:
+	  TAP(KC_MINUS);
+      break;
+    case 2:
+	  register_code(LV3);
+	  TAP(KC_MINUS);	  
+	  unregister_code(LV3);	  
+      break;
+    default:
+      reset_tap_dance(state);
+  }
+}
+
 // «/„ для русской раскладки
 void dance_elkilapki_left (qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
@@ -728,6 +745,7 @@ void dance_assign (qk_tap_dance_state_t *state, void *user_data) {
 //Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_QU]  = ACTION_TAP_DANCE_FN(dance_qu),
+  [TD_DASH]  = ACTION_TAP_DANCE_FN(dance_dash),
   [TD_GRAVEACCENT]  = ACTION_TAP_DANCE_FN(dance_graveaccent),  
   [TD_SHSIG] = ACTION_TAP_DANCE_FN(dance_shsig),
   [TD_ASSIGN] = ACTION_TAP_DANCE_FN(dance_assign),
