@@ -161,11 +161,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 							// right thumb
 							_____,_____,_____,
 							_____,_____,LT(LAYER_CONTROL,KC_SPACE)),
-
+  
 /* Russian layout
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |  «/„ |   ?  |   -  |   ,  |   ё  |      |           |      |   8  |   .  |   х  |   !  |  »/“ |   BSP  |
+ * |        |  «/„ |   ?  |   -  |   ,  |   ё  |      |           |      |   §  |   .  |   х  |   !  |  »/“ |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   й  |   ц  |   у  |   к  |   е  |      |           |      |   н  |   г  |   ш  |   щ  |   з  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -662,9 +662,16 @@ void dance_qu (qk_tap_dance_state_t *state, void *user_data) {
 
 // -/— minus or emdash
 void dance_dash (qk_tap_dance_state_t *state, void *user_data) {
+  uint8_t layer = biton32(layer_state);  // get the current layer  
   switch (state->count) {
     case 1:
+	  if (layer == LAYER_RUSSIAN) {
+		TAP(LAT);
+	  }
 	  TAP(KC_MINUS);
+	  if (layer == LAYER_RUSSIAN) {
+		TAP(RUS);
+	  }
       break;
     case 2:
 	  register_code(LV3);
