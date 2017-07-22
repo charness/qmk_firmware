@@ -459,8 +459,28 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
   return MACRO_NONE;
 };
 
+// implements user hook on the each key press/release
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  static bool backrus;
+  uint8_t layer;
+
   switch (keycode) {
+  case KC_A...KC_Z: // when Ctl pressen in Russian layout temporary switch back to Latin layout
+    if (record->event.pressed) {     
+      layer = biton32(layer_state);
+      if(layer == LAYER_RUSSIAN) {
+	if (keyboard_report->mods & (MOD_BIT(KC_LCTL) | MOD_BIT(KC_RCTL))) {
+	  layer_off(LAYER_RUSSIAN);
+	  backrus = true;
+	}
+      }
+    } else {
+      if (backrus) {
+	layer_on(LAYER_RUSSIAN);
+	backrus = false;
+      }	
+    }
+    break;
   case EPRM:
 	if (record->event.pressed) {
 	  eeconfig_init();
@@ -543,13 +563,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+// implements scan hook
+// use it only for fast actions!
 void matrix_scan_user(void) {
     static uint8_t old_layer = 0xff;
-  
     uint8_t layer = biton32(layer_state);
 
-	// do action once on a layer switch
-	if (layer == old_layer) return;
+    // do action once on a layer switch
+    if (layer == old_layer) return;
 	
     ergodox_board_led_off();
     ergodox_right_led_1_off();
@@ -565,33 +586,33 @@ void matrix_scan_user(void) {
 	  rgblight_show_solid_color(0,0,0);
       break;      
     case LAYER_RUSSIAN:
-	  register_code(RUS); // switch to Russian
-	  unregister_code(RUS);
+      register_code(RUS); // switch to Russian
+      unregister_code(RUS);
       ergodox_right_led_1_on();
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0xff,0x00,0xff);
       break;
-    case LAYER_AUXCHARS:
     case LAYER_AUXCHARS_RU:	  
-	  if (old_layer == LAYER_RUSSIAN) {
-		register_code(LAT); // switch to English
-		unregister_code(LAT);
-	  }	  
-      ergodox_right_led_2_on();
-      rgblight_show_solid_color(0x00,0xff,0x00);      
+      if (old_layer == LAYER_RUSSIAN) {
+	register_code(LAT); // switch to English
+	unregister_code(LAT);
+      }
+    case LAYER_AUXCHARS:
+      ergodox_right_led_3_on();
+      rgblight_show_solid_color(0x00,0x00,0xff);      
       break;
     case LAYER_MOUSE:
       ergodox_right_led_1_on();
       ergodox_right_led_2_on();
-	  rgblight_effect_christmas();
+      //rgblight_effect_christmas();
       break;
     case LAYER_NUMPAD:
 	  if (old_layer == LAYER_RUSSIAN) {
 		register_code(LAT); // switch to English
 		unregister_code(LAT);
 	  }	  
-      ergodox_right_led_3_on();
-      rgblight_show_solid_color(0x00,0x00,0xff);      
+      ergodox_right_led_2_on();
+      rgblight_show_solid_color(0x00,0xff,0x00);
       break;
     case LAYER_CONTROL:
 	  if (old_layer == LAYER_RUSSIAN) {
@@ -615,7 +636,7 @@ void matrix_scan_user(void) {
       ergodox_right_led_2_on();
       ergodox_right_led_3_on();
 	  // rgblight_effect_christmas();
-      rgblight_show_solid_color(0x11,0xff,0x33);	  
+      rgblight_show_solid_color(0x99,0x99,0x09);
       break;
     default:
       ergodox_right_led_1_on();
@@ -623,7 +644,7 @@ void matrix_scan_user(void) {
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0x20,0x20,0x10);
      }
-	old_layer = layer;
+    old_layer = layer;
 };
 
 // Grave vs accent sign
