@@ -75,6 +75,7 @@ enum {
   TD_ASSIGN,
   TD_LELKILAPKI,
   TD_RELKILAPKI,
+  TD_RUCOLON,
 };
 
 
@@ -165,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Russian layout
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |  «/„ |   ?  |   -  |   ,  |   ё  |      |           |      |   §  |   .  |   х  |   !  |  »/“ |   BSP  |
+ * |        |  «/„ |   ?  |   -  |   ,  |   ё  |      |           |      |  :/; |   .  |   х  |   !  |  »/“ |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   й  |   ц  |   у  |   к  |   е  |      |           |      |   н  |   г  |   ш  |   щ  |   з  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -202,7 +203,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 						   LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
 						   LT(LAYER_CONTROL,KC_SPACE),GUI_T(KC_BSPACE),KC_MINUS,
 						   // right fingers
-						   M(M_LAYER_IS_RUSSIAN),_____,KC_7,KC_LBRACKET,KC_MINUS,TD(TD_RELKILAPKI),_____,
+						   M(M_LAYER_IS_RUSSIAN),TD(TD_RUCOLON),KC_7,KC_LBRACKET,KC_MINUS,TD(TD_RELKILAPKI),_____,
 						   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
 						   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_AUXCHARS_RU,KC_SCOLON),KC_RCTL,
 						   _____,SFT_T(KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_NUMPAD,KC_QUOTE),KC_RSHIFT,
@@ -754,6 +755,24 @@ void dance_shsig (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
+// :/; для русской раскладки
+void dance_rucolon (qk_tap_dance_state_t *state, void *user_data) { 
+  switch (state->count) {
+    case 1:
+      TAP(LAT);
+      SEND_STRING(":");      
+      TAP(RUS);
+      break;
+    case 2:
+      TAP(LAT);
+      TAP(KC_SCOLON);
+      TAP(RUS);
+      break;
+    default:
+      reset_tap_dance(state);
+  }
+}
+
 // golang assign op
 void dance_assign (qk_tap_dance_state_t *state, void *user_data) {
   switch (state->count) {
@@ -777,4 +796,5 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_ASSIGN] = ACTION_TAP_DANCE_FN(dance_assign),
   [TD_LELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_left),
   [TD_RELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_right),
+  [TD_RUCOLON] = ACTION_TAP_DANCE_FN(dance_rucolon),
 };
