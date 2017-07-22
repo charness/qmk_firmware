@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |  Shift |   z  |   ,  |   u  |   k  |   j  |      |           |      |   m  |   c  |   x  |   v  |   /  |  Shift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |   _  |      |                                       |      |      |      |      |      |
+ *   | LAT  |      |      |   _  |      |                                       |      |      |      |      |  RUS |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |
@@ -173,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   я  |   ч  |   с  |   м  |   и  |      |           |      |   т  |  ь/ъ |   б  |   ю  |   э  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   | LAT  |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |
@@ -462,23 +462,21 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 // implements user hook on the each key press/release
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   static bool backrus;
-  uint8_t layer;
-
+  uint8_t layer        = biton32(layer_state);
+  
   switch (keycode) {
-  case KC_A...KC_Z: // when Ctl pressen in Russian layout temporary switch back to Latin layout
-    if (record->event.pressed) {     
-      layer = biton32(layer_state);
-      if(layer == LAYER_RUSSIAN) {
-	if (keyboard_report->mods & (MOD_BIT(KC_LCTL) | MOD_BIT(KC_RCTL))) {
-	  layer_off(LAYER_RUSSIAN);
-	  backrus = true;
-	}
-      }
-    } else {
-      if (backrus) {
+  case KC_LCTL...KC_RCTL: // when Ctl pressed in Russian layout temporary switch back to Latin layout
+    if (backrus) {
+      if (!record->event.pressed) {
 	layer_on(LAYER_RUSSIAN);
 	backrus = false;
-      }	
+      }
+    } else {
+      if (layer == LAYER_RUSSIAN) {
+	layer_off(LAYER_RUSSIAN);
+       	layer_on(LAYER_KEYMACS);
+	backrus = true;
+      }
     }
     break;
   case EPRM:
