@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */    
   [LAYER_KEYMACS] = KEYMAP( // left fingers
 						   KC_ESCAPE,TD(TD_GRAVEACCENT),KC_QUES,TD(TD_DASH),TD(TD_ASSIGN),KC_PLUS,TG(LAYER_NUMPAD),
-						   KC_LALT,TD(TD_QU),KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
+						   ALT_T(KC_TAB),TD(TD_QU),KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 						   KC_LCTL,LT(LAYER_AUXCHARS,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 						   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_COMMA,KC_U,KC_K,SFT_T(KC_J),M(M_EMACS_SELECT),
 						   TG(LAYER_KEYMACS),MO(LAYER_WM),_____,KC_UNDS,MO(LAYER_MOUSE),
@@ -145,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */    
   [LAYER_AUXCHARS] = KEYMAP(// left fingers
 							VRSN,TD(TD_GRAVEACCENT),KC_QUES,TD(TD_DASH),TD(TD_ASSIGN),KC_PLUS,_____,
-							KC_LALT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
+							ALT_T(KC_TAB),KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
 							KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
 							KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
 							_____,_____,_____,_____,_____,
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* It has used shift-shift switcher (https://github.com/grafov/shift-shift). */
   [LAYER_RUSSIAN] = KEYMAP(// left fingers
 						   KC_ESCAPE,TD(TD_LELKILAPKI),KC_9,TD(TD_DASH),KC_6,KC_SLASH,_____,
-						   KC_LALT,KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
+						   ALT_T(KC_TAB),KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
 						   KC_LCTL,LT(LAYER_AUXCHARS_RU,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
 						   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
 						   TO(LAYER_KEYMACS),_____,_____,_____,_____,
@@ -234,7 +234,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */    
   [LAYER_AUXCHARS_RU] = KEYMAP(// left fingers
 							   XKBHELP,KC_GRAVE,KC_9,TD(TD_DASH),KC_6,KC_PLUS,_____,
-							   KC_LT,KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
+							   ALT_T(KC_TAB),KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
 							   KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
 							   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
 							   _____,_____,_____,_____,_____,
