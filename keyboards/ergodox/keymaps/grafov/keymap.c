@@ -466,7 +466,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   uint8_t layer        = biton32(layer_state);
   
   switch (keycode) {
-  case KC_LCTL...KC_RCTL: // when Ctl pressed in Russian layout temporary switch back to Latin layout
+  case KC_LCTL: // when Ctl pressed in Russian layout temporary switch back to Latin layout
+  case KC_RCTL:
+  case KC_LALT: // when Alt pressed in Russian layout temporary switch back to Latin layout
+  case KC_RALT: 
     if (backrus) {
       if (!record->event.pressed) {
 	layer_on(LAYER_RUSSIAN);
@@ -577,12 +580,12 @@ void matrix_scan_user(void) {
     ergodox_right_led_3_off();
     switch (layer) {
     case LAYER_KEYMACS:
-	  //      rgblight_task();
-	  if (old_layer == LAYER_RUSSIAN) {
-		register_code(LAT); // switch to English
-		unregister_code(LAT);
-	  }
-	  rgblight_show_solid_color(0,0,0);
+      //      rgblight_task();
+      if (old_layer == LAYER_RUSSIAN) {
+	register_code(LAT); // switch to English
+	unregister_code(LAT);
+      }
+      rgblight_show_solid_color(0,0,0);
       break;      
     case LAYER_RUSSIAN:
       register_code(RUS); // switch to Russian
@@ -606,18 +609,18 @@ void matrix_scan_user(void) {
       //rgblight_effect_christmas();
       break;
     case LAYER_NUMPAD:
-	  if (old_layer == LAYER_RUSSIAN) {
-		register_code(LAT); // switch to English
-		unregister_code(LAT);
-	  }	  
+      if (old_layer == LAYER_RUSSIAN) {
+	register_code(LAT); // switch to English
+	unregister_code(LAT);
+      }	  
       ergodox_right_led_2_on();
       rgblight_show_solid_color(0x00,0xff,0x00);
       break;
     case LAYER_CONTROL:
-	  if (old_layer == LAYER_RUSSIAN) {
-		register_code(LAT); // switch to English
-		unregister_code(LAT);
-	  }	  
+      if (old_layer == LAYER_RUSSIAN) {
+	register_code(LAT); // switch to English
+	unregister_code(LAT);
+      }	  
       ergodox_right_led_1_on();
       rgblight_show_solid_color(0xff,0x00,0x00);
       break;
