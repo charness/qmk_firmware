@@ -317,7 +317,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   _____,_____,_____,_____,_____,
 	   // right thumb
 	   _____,_____,_____
-	   ,_____,KC_RGUI,LT(LAYER_CONTROL,KC_SPACE)),
+	   ,_____,KC_RGUI,LT(LAYER_CONTROL,KC_ENTER)),
 
   // Control layer for line and page navigation
   // TODO maybe combine it with WM control layer?
