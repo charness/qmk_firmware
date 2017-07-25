@@ -619,6 +619,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+
 #define LEDOFF     ergodox_board_led_off(); \
   ergodox_right_led_1_off(); \
   ergodox_right_led_2_off(); \
@@ -627,25 +628,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // implements scan hook
 // use it only for fast actions!
 void matrix_scan_user(void) {
-    static uint8_t old_layer = 0xff;
+	static uint32_t old_layer_state = 0xffff;	
+	if (layer_state == old_layer_state) return;
+	old_layer_state = layer_state;	
     uint8_t layer = biton32(layer_state);
-
-    // do action once on a layer switch
-    if (layer == old_layer) return;
 
     switch (layer) {
     case LAYER_KEYMACS:
-      //      rgblight_task();
-      /* if (old_layer == LAYER_RUSSIAN) { */
-	  /* 	TAP(LAT); // switch to English */
-      /* } */
 	  LEDOFF;	  
       rgblight_show_solid_color(0,0,0);
       break;      
     case LAYER_CONTROL:
-      /* if (old_layer == LAYER_RUSSIAN) { */
-	  /* 	TAP(LAT); // switch to English */
-      /* } */
 	  LEDOFF;
       ergodox_right_led_1_on();
       rgblight_show_solid_color(0xff,0x00,0x00);
@@ -656,16 +649,12 @@ void matrix_scan_user(void) {
       rgblight_show_solid_color(0x00,0x00,0xff);      
       break;
     case LAYER_RUSSIAN:
-	  //      TAP(RUS); // switch to Russian
 	  LEDOFF;
       ergodox_right_led_1_on();
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0xff,0x00,0xff);
       break;
     case LAYER_AUXCHARS_RU:	  
-	  //      if (old_layer == LAYER_RUSSIAN) {
-	  //		TAP(LAT); // switch to English
-	  //      }
 	  LEDOFF;	  
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0x00,0x00,0xff);      
@@ -679,9 +668,6 @@ void matrix_scan_user(void) {
       //rgblight_effect_christmas();
       break;
     case LAYER_NUMPAD:
-	  //      if (old_layer == LAYER_RUSSIAN) {
-	  //		TAP(LAT); // switch to English
-	  //      }
 	  LEDOFF;
       ergodox_right_led_2_on();
       rgblight_show_solid_color(0x00,0xff,0x00);
@@ -693,9 +679,6 @@ void matrix_scan_user(void) {
       rgblight_show_solid_color(0x00,0xff,0xff);
       break;
     case LAYER_WM:
-      /* if (old_layer == LAYER_RUSSIAN) { */
-	  /* 	TAP(LAT); // switch to English */
-      /* } */
 	  LEDOFF;	  	  
       ergodox_right_led_1_on();
       ergodox_right_led_2_on();
@@ -710,7 +693,6 @@ void matrix_scan_user(void) {
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0x20,0x20,0x10);
     }
-    old_layer = layer;
 };
 
 // Grave vs accent sign
