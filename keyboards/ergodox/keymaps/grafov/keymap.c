@@ -165,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   _____,_____,_____,_____,_____,
 	   // right thumb
 	   _____,_____,_____,
-	   _____,_____,LT(LAYER_CONTROL,KC_SPACE)),
+	   _____,_____,LT(LAYER_CONTROL,KC_ENTER)),
   
 /* Russian layout
  *
@@ -256,7 +256,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   _____,KC_COLON,KC_SCOLON,_____,_____,
 	   // right thumb
 	   _____,_____,_____,
-	   _____,_____,LT(LAYER_CONTROL,KC_SPACE)),
+	   _____,_____,LT(LAYER_CONTROL,KC_ENTER)),
 
   // Mouse control
   [LAYER_MOUSE] \
