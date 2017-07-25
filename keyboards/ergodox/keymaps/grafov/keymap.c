@@ -249,7 +249,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   _____,_____,_____,
 	   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 	   // right fingers
-	   M(M_LAYER_IS_AUXCHARS),KC_ASTR,KC_SCOLON,KC_LBRACKET,KC_MINUS,KC_EQUAL,_____,
+	   M(M_LAYER_IS_AUXCHARS_RU),KC_ASTR,KC_SCOLON,KC_LBRACKET,KC_MINUS,KC_EQUAL,_____,
 	   _____,KC_RABK,KC_RBRACKET,KC_DLR,KC_PERC,KC_NO,KC_RALT,
 	   KC_NO,KC_RPRN,KC_RCBR,KC_UNDS,KC_NO,KC_RCTRL,
 	   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
@@ -498,9 +498,30 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 // implements user hook on the each key press/release
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  static uint8_t old_layer = 0xff; 
   static bool backrus;
-  uint8_t layer        = biton32(layer_state);
-  
+  static uint8_t layer = 0xff;
+
+  old_layer = layer;  
+  layer = biton32(layer_state);
+
+  if (old_layer != layer) {
+	switch (layer) {
+    case LAYER_CONTROL:
+    case LAYER_KEYMACS:
+    case LAYER_NUMPAD:
+	case LAYER_AUXCHARS_RU:
+    case LAYER_WM:
+	  if (old_layer == LAYER_RUSSIAN) {
+		TAP(LAT); // switch to English
+	  }
+	  break;
+    case LAYER_RUSSIAN:
+	  TAP(RUS); // switch to Russian
+	  break;
+	}
+  }
+
   switch (keycode) {
   case KC_LCTL: // when Ctl pressed in Russian layout temporary switch back to Latin layout
   case KC_RCTL:
@@ -508,14 +529,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case KC_RALT: 
     if (backrus) {
       if (!record->event.pressed) {
-	layer_on(LAYER_RUSSIAN);
-	backrus = false;
+		layer_on(LAYER_RUSSIAN);
+		backrus = false;
       }
     } else {
       if (layer == LAYER_RUSSIAN) {
-	layer_off(LAYER_RUSSIAN);
+		layer_off(LAYER_RUSSIAN);
        	layer_on(LAYER_KEYMACS);
-	backrus = true;
+		backrus = true;
       }
     }
     break;
@@ -572,8 +593,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
 	}
 	return false;
-	break;
-    
+	break;    
   case RGB_800080:
 	if (record->event.pressed) {
 #ifdef RGBLIGHT_ENABLE
@@ -595,8 +615,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	return false;
 	break;    
   }
+  
   return true;
 }
+
+#define LEDOFF     ergodox_board_led_off(); \
+  ergodox_right_led_1_off(); \
+  ergodox_right_led_2_off(); \
+  ergodox_right_led_3_off()
 
 // implements scan hook
 // use it only for fast actions!
@@ -606,45 +632,46 @@ void matrix_scan_user(void) {
 
     // do action once on a layer switch
     if (layer == old_layer) return;
-	
-    ergodox_board_led_off();
-    ergodox_right_led_1_off();
-    ergodox_right_led_2_off();
-    ergodox_right_led_3_off();
+
     switch (layer) {
     case LAYER_KEYMACS:
       //      rgblight_task();
-      if (old_layer == LAYER_RUSSIAN) {
-	register_code(LAT); // switch to English
-	unregister_code(LAT);
-      }
+      /* if (old_layer == LAYER_RUSSIAN) { */
+	  /* 	TAP(LAT); // switch to English */
+      /* } */
+	  LEDOFF;	  
       rgblight_show_solid_color(0,0,0);
       break;      
     case LAYER_CONTROL:
-      if (old_layer == LAYER_RUSSIAN) {
-	register_code(LAT); // switch to English
-	unregister_code(LAT);
-      }	  
+      /* if (old_layer == LAYER_RUSSIAN) { */
+	  /* 	TAP(LAT); // switch to English */
+      /* } */
+	  LEDOFF;
       ergodox_right_led_1_on();
       rgblight_show_solid_color(0xff,0x00,0x00);
       break;
     case LAYER_AUXCHARS:
+	  LEDOFF;
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0x00,0x00,0xff);      
       break;
     case LAYER_RUSSIAN:
-      register_code(RUS); // switch to Russian
-      unregister_code(RUS);
+	  //      TAP(RUS); // switch to Russian
+	  LEDOFF;
       ergodox_right_led_1_on();
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0xff,0x00,0xff);
       break;
     case LAYER_AUXCHARS_RU:	  
-      if (old_layer == LAYER_RUSSIAN) {
-	register_code(LAT); // switch to English
-	unregister_code(LAT);
-      }
+	  //      if (old_layer == LAYER_RUSSIAN) {
+	  //		TAP(LAT); // switch to English
+	  //      }
+	  LEDOFF;	  
+      ergodox_right_led_3_on();
+      rgblight_show_solid_color(0x00,0x00,0xff);      
+	  break;
     case LAYER_MOUSE:
+	  LEDOFF;	  
       ergodox_right_led_1_on();
       ergodox_right_led_2_on();
       ergodox_right_led_1_on();
@@ -652,23 +679,24 @@ void matrix_scan_user(void) {
       //rgblight_effect_christmas();
       break;
     case LAYER_NUMPAD:
-      if (old_layer == LAYER_RUSSIAN) {
-	register_code(LAT); // switch to English
-	unregister_code(LAT);
-      }	  
+	  //      if (old_layer == LAYER_RUSSIAN) {
+	  //		TAP(LAT); // switch to English
+	  //      }
+	  LEDOFF;
       ergodox_right_led_2_on();
       rgblight_show_solid_color(0x00,0xff,0x00);
       break;
     case LAYER_FN:
+	  LEDOFF;	  	  
       ergodox_right_led_2_on();
       ergodox_right_led_3_on();
       rgblight_show_solid_color(0x00,0xff,0xff);
       break;
     case LAYER_WM:
-      if (old_layer == LAYER_RUSSIAN) {
-	register_code(LAT); // switch to English
-	unregister_code(LAT);
-      }	  
+      /* if (old_layer == LAYER_RUSSIAN) { */
+	  /* 	TAP(LAT); // switch to English */
+      /* } */
+	  LEDOFF;	  	  
       ergodox_right_led_1_on();
       ergodox_right_led_2_on();
       ergodox_right_led_3_on();
@@ -676,6 +704,7 @@ void matrix_scan_user(void) {
       rgblight_show_solid_color(0x99,0x99,0x09);
       break;
     default:
+	  LEDOFF;	  	  
       ergodox_right_led_1_on();
       ergodox_right_led_2_on();	    
       ergodox_right_led_3_on();
