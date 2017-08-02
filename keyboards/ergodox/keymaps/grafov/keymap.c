@@ -131,9 +131,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   `  |   ?  |   -  |   :  |   +  |      |           |      |   *  |   ;  |   "  |   !  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |   ^  |   #  |   [  |      |      |           |      |      |   ]  |   $  |   %  |      |        |
+ * |        |      |   ^  |   &  |   [  |      |      |           |      |      |   ]  |   $  |   %  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |   &  |   {  |.  (  |      |------|           |------|      |.  )  |   }  |   _  |      |        |
+ * |        |      |   #  |   {  |.  (  |      |------|           |------|      |.  )  |   }  |   _  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   <  |   ~  |   @  |      |      |           |      |      |   =  |   \  |   |  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -150,8 +150,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_AUXCHARS] \
   = KEYMAP(// left fingers
 	   VRSN,TD(TD_GRAVEACCENT),KC_QUES,TD(TD_DASH),TD(TD_ASSIGN),KC_PLUS,_____,
-	   ALT_T(KC_TAB),KC_NO,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
-	   KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
+	   ALT_T(KC_TAB),KC_NO,KC_CIRC,KC_AMPR,KC_LBRACKET,KC_NO,_____,
+	   KC_LCTL,KC_NO,KC_HASH,KC_LCBR,KC_LPRN,KC_NO,
 	   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
 	   _____,_____,_____,_____,_____,
 	   // left thumb
@@ -222,9 +222,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   `  |   ?  |   -  |   ,  |   +  |      |           |      |   *  |   .  |   "  |   !  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   №  |   ^  |   #  |   [  |      |      |           |      |      |   ]  |   $  |   %  |      |        |
+ * |        |   №  |   ^  |   &  |   [  |      |      |           |      |      |   ]  |   $  |   %  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |   &  |   {  |.  (  |      |------|           |------|      |.  )  |   }  |   _  |      |        |
+ * |        |      |   #  |   {  |.  (  |      |------|           |------|      |.  )  |   }  |   _  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   <  |   ~  |   @  |      |      |           |      |      |   =  |   \  |   |  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -241,8 +241,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_AUXCHARS_RU] \
   = KEYMAP(// left fingers
 	   XKBHELP,KC_GRAVE,KC_MINUS,TD(TD_DASH),KC_COLON,KC_PLUS,_____,
-	   ALT_T(KC_TAB),KC_1,KC_CIRC,KC_HASH,KC_LBRACKET,KC_NO,_____,
-	   KC_LCTL,KC_NO,KC_AMPR,KC_LCBR,KC_LPRN,KC_NO,
+	   ALT_T(KC_TAB),KC_1,KC_CIRC,KC_AMPR,KC_LBRACKET,KC_NO,_____,
+	   KC_LCTL,KC_NO,KC_HASH,KC_LCBR,KC_LPRN,KC_NO,
 	   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
 	   _____,_____,_____,SFT_T(KC_9),_____,
 	   // left thumb
@@ -681,10 +681,10 @@ void matrix_scan_user(void) {
     case LAYER_WM:
 	  LEDOFF;	  	  
       ergodox_right_led_1_on();
-      ergodox_right_led_2_on();
-      ergodox_right_led_3_on();
+	  //      ergodox_right_led_2_on();
+      //ergodox_right_led_3_on();
       // rgblight_effect_christmas();
-      rgblight_show_solid_color(0x99,0x99,0x09);
+      rgblight_show_solid_color(0x99,0x77,0x0A);
       break;
     default:
 	  LEDOFF;	  	  
