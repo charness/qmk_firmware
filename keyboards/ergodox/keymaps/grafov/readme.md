@@ -50,12 +50,13 @@ Keymacs layout
 --------------
 
 I had used Keymacs on general keyboards for a while and finally
-adapted it for Ergodox. I still think even with good hardware
-placement of the keys on the keyboard placement of letters is
-important for ergonomics. So the layouts like Workman or Colemak even
-Dvorak is safer for your fingers then default Qwerty.
+adapted it for Ergodox. I still think even with good hardware the
+placement of the letters is important for ergonomics. So the layouts
+like Workman or Colemak even Dvorak is safer for your fingers then
+default Qwerty.
 
-See https://github.com/keyboard-ergonomics/keymacs
+See more info about Emacs oriented layout:
+https://github.com/keyboard-ergonomics/keymacs
 
 Russian layout
 --------------
@@ -82,8 +83,13 @@ may follow some troubles here because there are some words (rare used
 though) where Е letter doubled or even tripled (word "длинношеее" for
 example). So I still thinking about placing poor Ё on the keyboard.
 
-Russian layout realized basically it still needs a lot of improvements
-with switcher (I should
-adapt [shift-shift](https://github.com/grafov/shift-shift) for other
-keys). And punctuations haven't set yet.
+I had used custom made
+qsolution [shift-shift](https://github.com/grafov/shift-shift) but
+with Ergodox I have switched to default `xkb`. The lowest key in the
+right corner of the right part have using for RUS layout and the
+lowest key in the left corner of the left part for the LAT. I put the
+help string with `xkb` settings as keyboard macro. See the usage of:
 
+   #define XKBSTR "setxkbmap -layout \"us,ru(typewriter)\" -option grp:sclk_toggle -option lv3:caps_switch -option misc:typo"
+
+in the code.
