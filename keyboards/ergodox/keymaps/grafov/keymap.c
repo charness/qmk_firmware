@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_KEYMACS] \
   = KEYMAP( // left fingers
 	   KC_ESCAPE,KC_GRAVE,KC_EXLM,TD(TD_DASH),KC_COLON,KC_PLUS,TG(LAYER_NUMPAD),
-	   ALT_T(KC_TAB),TD(TD_QU),KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
+	   ALT_T(KC_TAB),KC_Q,KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 	   KC_LCTL,LT(LAYER_AUXCHARS,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 	   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_COMMA,KC_U,KC_K,SFT_T(KC_J),M(M_EMACS_SELECT),
 	   TG(LAYER_KEYMACS),MO(LAYER_WM),_____,KC_UNDS,MO(LAYER_MOUSE),
@@ -743,24 +743,6 @@ void dance_graveaccent (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
-// Q or QU experiment
-void dance_qu (qk_tap_dance_state_t *state, void *user_data) {
-  switch (state->count) {
-    case 1:
-      register_code(KC_Q);
-      unregister_code(KC_Q);
-      break;
-    case 2:
-      register_code(KC_Q);
-      unregister_code(KC_Q);      
-      register_code(KC_U);
-      unregister_code(KC_U);
-      break;
-    default:
-      reset_tap_dance(state);
-  }
-}
-
 // -/— minus or emdash
 void dance_dash (qk_tap_dance_state_t *state, void *user_data) {
   uint8_t layer = biton32(layer_state);  // get the current layer  
@@ -856,7 +838,6 @@ void dance_rucolon (qk_tap_dance_state_t *state, void *user_data) {
 
 // And finally the Dancings!
 qk_tap_dance_action_t tap_dance_actions[] = {
-  [TD_QU]  = ACTION_TAP_DANCE_FN(dance_qu),
   [TD_DASH]  = ACTION_TAP_DANCE_FN(dance_dash),
   [TD_GRAVEACCENT]  = ACTION_TAP_DANCE_FN(dance_graveaccent),  
   [TD_SHSIG] = ACTION_TAP_DANCE_FN(dance_shsig),
