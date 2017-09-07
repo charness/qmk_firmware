@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */    
   [LAYER_KEYMACS] \
   = KEYMAP( // left fingers
-	   KC_ESCAPE,KC_GRAVE,KC_EXLM,TD(TD_DASH),KC_COLON,KC_PLUS,TG(LAYER_NUMPAD),
+	   KC_ESCAPE,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,TG(LAYER_NUMPAD),
 	   ALT_T(KC_TAB),KC_Q,KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 	   KC_LCTL,LT(LAYER_AUXCHARS,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 	   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_COMMA,KC_U,KC_K,SFT_T(KC_J),M(M_EMACS_SELECT),
@@ -153,24 +153,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
   [LAYER_AUXCHARS] \
-  = KEYMAP(// left fingers
-	   VRSN,KC_GRAVE,KC_EXLM,TD(TD_DASH),KC_COLON,KC_PLUS,_____,
-	   ALT_T(KC_TAB),M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
-	   KC_LCTL,KC_NO,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
-	   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
-	   _____,_____,_____,_____,_____,
-	   // left thumb
-	   _____,_____,_____,
-	   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
-	   // right fingers
-	   M(M_LAYER_IS_AUXCHARS),KC_ASTR,KC_SCOLON,KC_DQUO,KC_QUES,KC_EQUAL,_____,
-	   _____,KC_RABK,KC_AMPR,KC_DLR,KC_CIRC,KC_NO,KC_RALT,
-	   KC_NO,KC_LCBR,KC_RCBR,KC_HASH,KC_NO,KC_RCTRL,
-	   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
-	   _____,_____,_____,_____,_____,
-	   // right thumb
-	   _____,_____,_____,
-	   _____,_____,LT(LAYER_CONTROL,KC_ENTER)),
+  = KEYMAP(
+		   // left fingers
+		   VRSN,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,_____,
+		   ALT_T(KC_TAB),M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
+		   KC_LCTL,KC_NO,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
+		   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
+		   _____,_____,_____,_____,_____,
+		   // left thumb
+		   _____,_____,_____,
+		   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
+		   // right fingers
+		   M(M_LAYER_IS_AUXCHARS),KC_ASTR,KC_SCOLON,KC_DQUO,KC_QUES,KC_EQUAL,_____,
+		   _____,KC_RABK,KC_AMPR,KC_DLR,KC_CIRC,KC_NO,KC_RALT,
+		   KC_NO,KC_LCBR,KC_RCBR,KC_HASH,KC_NO,KC_RCTRL,
+		   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_PIPE,KC_NO,KC_RSHIFT,
+		   _____,_____,_____,_____,_____,
+		   // right thumb
+		   _____,_____,_____,
+		   _____,_____,LT(LAYER_CONTROL,KC_ENTER)),
   
 /* Russian layout
  *
@@ -203,24 +204,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   
   /* It has used shift-shift switcher (https://github.com/grafov/shift-shift). */
   [LAYER_RUSSIAN] \
-  = KEYMAP(// left fingers
-	   KC_ESCAPE,TD(TD_LELKILAPKI),KC_MINUS,TD(TD_DASH),KC_6,KC_SLASH,_____,
-	   ALT_T(KC_TAB),KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
-	   KC_LCTL,LT(LAYER_AUXCHARS_RU,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
-	   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
-	   TO(LAYER_KEYMACS),_____,_____,KC_9,_____,
-	   // left thumb
-	   LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
-	   LT(LAYER_CONTROL,KC_SPACE),GUI_T(KC_BSPACE),KC_MINUS,
-	   // right fingers
-	   M(M_LAYER_IS_RUSSIAN),_____,KC_7,KC_LBRACKET,KC_9,TD(TD_RELKILAPKI),_____,
-	   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
-	   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_AUXCHARS_RU,KC_SCOLON),KC_RCTL,
-	   _____,SFT_T(KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_NUMPAD,KC_QUOTE),KC_RSHIFT,
-	   _____,KC_5,KC_EQUAL,_____,_____,
-	   // right thumb
-	   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
-	   ALT_T(KC_APPLICATION),GUI_T(KC_TAB),LT(LAYER_CONTROL,KC_ENTER)),
+  = KEYMAP(
+		   // left fingers
+		   KC_ESCAPE,TD(TD_LELKILAPKI),KC_MINUS,TD(TD_DASH),KC_6,KC_SLASH,_____,
+		   ALT_T(KC_TAB),KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
+		   KC_LCTL,LT(LAYER_AUXCHARS_RU,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
+		   KC_LSHIFT,LT(LAYER_NUMPAD,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
+		   TO(LAYER_KEYMACS),_____,_____,KC_9,_____,
+		   // left thumb
+		   LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
+		   LT(LAYER_CONTROL,KC_SPACE),GUI_T(KC_BSPACE),KC_MINUS,
+		   // right fingers
+		   M(M_LAYER_IS_RUSSIAN),_____,KC_7,KC_LBRACKET,KC_9,TD(TD_RELKILAPKI),_____,
+		   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
+		   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_AUXCHARS_RU,KC_SCOLON),KC_RCTL,
+		   _____,SFT_T(KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_NUMPAD,KC_QUOTE),KC_RSHIFT,
+		   _____,KC_5,KC_EQUAL,_____,_____,
+		   // right thumb
+		   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
+		   ALT_T(KC_APPLICATION),GUI_T(KC_TAB),LT(LAYER_CONTROL,KC_ENTER)),
 
 /* Symbol Layer for Russian layout
  *
@@ -245,7 +247,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
   [LAYER_AUXCHARS_RU] \
   = KEYMAP(// left fingers
-	   XKBHELP,KC_GRAVE,KC_EXLM,TD(TD_DASH),KC_COLON,KC_PLUS,_____,
+	   XKBHELP,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,_____,
 	   ALT_T(KC_TAB),M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
 	   KC_LCTL,KC_NO,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
 	   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
@@ -351,7 +353,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   _____,_____,_____,_____,LGUI(KC_F10),LGUI(KC_F11),LGUI(KC_F5),
 	   _____,_____,KC_LEFT,KC_UP,KC_RIGHT,KC_ESCAPE,_____,
 	   _____,LSFT(KC_TAB),KC_HOME,KC_UP,KC_DOWN,KC_END,
-	   _____,_____,RCTL(RSFT(KC_COMMA)),KC_PGUP,KC_PGDOWN,LGUI(KC_J),_____,
+	   _____,RCTL(KC_Z),RCTL(RSFT(KC_COMMA)),KC_PGUP,KC_PGDOWN,LGUI(KC_J),_____,
 	   TO(LAYER_KEYMACS),_____,_____,_____,_____,
 	   // left thumb
 	   _____,_____,_____,_____,_____,_____,
@@ -532,6 +534,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   static uint8_t old_layer = 0xff; 
   static bool backrus;
   static uint8_t layer = 0xff;
+  static bool shift_pressed;
 
   old_layer = layer;  
   layer = biton32(layer_state);
@@ -554,6 +557,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   switch (keycode) {
+  case KC_LSHIFT:
+  case KC_RSHIFT:
+	if (record->event.pressed) {
+	  shift_pressed=true;
+	} else {
+	  shift_pressed=false;
+	}
+	return true;
   case KC_LCTL: // when Ctl pressed in Russian layout temporary switch back to Latin layout
   case KC_RCTL:
   case KC_LALT: // when Alt pressed in Russian layout temporary switch back to Latin layout
@@ -570,7 +581,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		backrus = true;
       }
     }
-    break;
+    return true;
+  case KC_MINUS:
+	if (shift_pressed && record->event.pressed) {
+	  unregister_code(KC_LSHIFT); unregister_code(KC_RSHIFT);
+	  register_code(LV3);
+	}
+	if (record->event.pressed) {
+	  TAP(KC_MINUS);
+	}
+	if (shift_pressed && !record->event.pressed) {
+	  unregister_code(LV3);
+	}
+	return false;
   case EPRM:
 	if (record->event.pressed) {
 	  eeconfig_init();
