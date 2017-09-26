@@ -75,6 +75,8 @@ enum {
   ACCENT,
   RU_NN,
   KEYNAV,
+  M_WMDOWN,
+  M_WMUP,
   M_LAYER_IS_KEYMACS,
   M_LAYER_IS_AUXCHARS,
   M_LAYER_IS_RUSSIAN,
@@ -475,9 +477,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   LT(LAYER_CONTROL,KC_SPACE),LCTL(LGUI(KC_T)),LCTL(KC_C),
 	   // right fingers 
 	   _____,KC_ASTR,KC_SCOLON,KC_DQUO,KC_QUES,KC_EQUAL,KC_BSPACE,
-	   OSL(LAYER_FN),ALT_T(KC_V),KC_W,KC_D,KC_Y,KC_QUOTE,KC_RALT,
+	   M(M_WMUP),ALT_T(KC_V),KC_W,KC_D,KC_Y,KC_QUOTE,KC_RALT,
 	   CTL_T(KC_L),KC_O,KC_T,KC_I,LT(LAYER_AUXCHARS,KC_H),KC_RCTL,
-	   _____,SFT_T(KC_M),KC_C,KC_X,KC_DOT,KC_SLASH,KC_RSHIFT,
+	   M(M_WMDOWN),SFT_T(KC_M),KC_C,KC_X,KC_DOT,KC_SLASH,KC_RSHIFT,
 	   M(KEYNAV),KC_UNDS,_____,_____,TO(LAYER_RUSSIAN),
 	   // right thumb
 	   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
@@ -522,6 +524,10 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 	return MACRO(D(LCTL), D(LALT), T(N), U(LCTL), U(LALT), END);	
   case M_EMACS_SELECT: // Emacs: reset the selection and activate a new one
     return MACRO(D(LCTL),T(G),T(SPC),U(LCTL),END);
+  case M_WMUP:
+	return MACRO(D(LALT), T(UP), U(LALT), END);
+  case M_WMDOWN:
+	return MACRO(D(LALT), T(DOWN), U(LALT), END);
   case M_LAYER_IS_KEYMACS:
     SEND_STRING ("Layer is Keymacs [0]");
     break;
@@ -589,6 +595,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	  if (old_layer == LAYER_RUSSIAN) {
 		TAP(LAT); // switch to English
 	  }
+	  // (set-prefix-key (kbd "C-s-t"))
 	  register_code(KC_LCTL); register_code(KC_LGUI);
 	  TAP(KC_T);
 	  unregister_code(KC_LGUI); unregister_code(KC_LCTL);
