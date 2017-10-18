@@ -136,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   TG(LAYER_KEYMACS),_____,_____,KC_UNDS,MO(LAYER_MOUSE),
 	   // left thumb
 	   LCTL(KC_G),KC_WWW_BACK,LCTL(KC_V),
-	   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_WM,KC_ENTER),LCTL(KC_C),
+	   LT(LAYER_CONTROL,KC_SPACE),KC_ENTER,LCTL(KC_C),
 	   // right fingers 
 	   TG(LAYER_NUMPAD),KC_ASTR,KC_SCOLON,KC_DQUO,KC_QUES,KC_EQUAL,KC_BSPACE,
 	   OSL(LAYER_FN),ALT_T(KC_V),KC_W,KC_D,KC_Y,KC_QUOTE,KC_RALT,
@@ -145,8 +145,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   M(KEYNAV),KC_UNDS,_____,_____,TT(LAYER_RUSSIAN),
 	   // right thumb
 	   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
-	   ALT_T(KC_APPLICATION),LT(LAYER_WM,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
-         
+	   ALT_T(KC_APPLICATION),KC_ENTER,LT(LAYER_CONTROL,KC_SPACE)),
+
 /* Symbol Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -172,9 +172,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   = KEYMAP(
 		   // left fingers
 		   VRSN,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,M(M_LAYER_IS_AUXCHARS),
-		   ALT_T(KC_TAB),M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,XXXXX,_____,
+		   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,XXXXX,_____,
 		   KC_LCTL,XXXXX,KC_UNDS,KC_LPRN,KC_RPRN,XXXXX,
-		   KC_LSHIFT,XXXXX,KC_LABK,KC_TILD,KC_AT,XXXXX,_____,
+		   KC_LSHIFT,XXXXX,KC_LABK,KC_TILD,KC_AT,KC_TAB,_____,
 		   _____,_____,_____,_____,_____,
 		   // left thumb
 		   _____,_____,_____,
@@ -223,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   = KEYMAP(
 		   // left fingers
 		   KC_ESCAPE,TD(TD_LELKILAPKI),KC_MINUS,TD(TD_DASH),KC_6,KC_SLASH,M(M_LAYER_IS_RUSSIAN),
-		   ALT_T(KC_TAB),KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
+		   KC_LALT,KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
 		   KC_LCTL,LT(LAYER_NUMPAD,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
 		   KC_LSHIFT,LT(LAYER_AUXCHARS_RU,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
 		   TO(LAYER_KEYMACS),_____,_____,KC_9,_____,
@@ -264,9 +264,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_AUXCHARS_RU] \
   = KEYMAP(// left fingers
 	   XKBHELP,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,M(M_LAYER_IS_AUXCHARS_RU),
-	   ALT_T(KC_TAB),M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
+	   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
 	   KC_LCTL,KC_NO,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
-	   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
+	   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_TAB,_____,
 	   _____,_____,_____,SFT_T(KC_9),_____,
 	   // left thumb
 	   _____,_____,_____,
@@ -345,9 +345,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NUMPAD] \
   = KEYMAP(// left fingers
 		   KC_NUMLOCK,TD(TD_GRAVEACCENT),KC_EXLM,TD(TD_DASH),KC_COLON,KC_PLUS,M(M_LAYER_IS_NUMPAD),
-		   ALT_T(KC_TAB),M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
+		   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
 		   KC_LCTL,KC_NO,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
-		   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_NO,_____,
+		   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_TAB,_____,
 		   _____,_____,_____,_____,_____,
 		   // left thumb 
 		   _____,_____,_____,
@@ -369,7 +369,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   		   TO(LAYER_MEDIA),_____,_____,_____,LGUI(KC_F10),LGUI(KC_F11),M(M_LAYER_IS_CONTROL),
   		   _____,_____,KC_LEFT,KC_UP,KC_RIGHT,KC_ESCAPE,_____,
   		   _____,LSFT(KC_TAB),KC_HOME,KC_UP,KC_DOWN,KC_END,
-  		   _____,RCTL(KC_Z),RCTL(RSFT(KC_COMMA)),KC_PGUP,KC_PGDOWN,LGUI(KC_J),_____,
+  		   _____,RCTL(KC_Z),RCTL(RSFT(KC_COMMA)),KC_PGUP,KC_PGDOWN,KC_TAB,_____,
   		   TO(LAYER_KEYMACS),_____,_____,_____,_____,
   		   // left thumb
   		   KC_SPACE,KC_ENTER,_____,_____,_____,_____,
@@ -464,7 +464,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   // right thumb
 	   RGB_TOG,RGB_SLD,_____,_____,RGB_HUD,RGB_HUI),
 
-  // Window manager control (for i3 currently)
+  // Window manager control (for StumpWM)
   [LAYER_WM]					\
   = KEYMAP(// left fingers
 	   KC_ESCAPE,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,M(M_LAYER_IS_CONTROL),
@@ -474,7 +474,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   TO(LAYER_KEYMACS),_____,_____,KC_UNDS,MO(LAYER_MOUSE),
 	   // left thumb
 	   LCTL(KC_G),KC_WWW_BACK,LCTL(KC_V),
-	   LT(LAYER_CONTROL,KC_SPACE),LCTL(LGUI(KC_T)),LCTL(KC_C),
+	   LT(LAYER_CONTROL,KC_SPACE),_____,LCTL(KC_C),
 	   // right fingers 
 	   _____,KC_ASTR,KC_SCOLON,KC_DQUO,KC_QUES,KC_EQUAL,KC_BSPACE,
 	   M(M_WMUP),ALT_T(KC_V),KC_W,KC_D,KC_Y,KC_QUOTE,KC_RALT,
@@ -483,7 +483,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   M(KEYNAV),KC_UNDS,_____,_____,TO(LAYER_RUSSIAN),
 	   // right thumb
 	   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
-	   ALT_T(KC_APPLICATION),LCTL(LGUI(KC_T)),LT(LAYER_CONTROL,KC_SPACE)),
+	   ALT_T(KC_APPLICATION),_____,LT(LAYER_CONTROL,KC_SPACE)),
 
 
 	   /* 	   XKBHELP,LSFT(LGUI(KC_9)),LSFT(LGUI(KC_7)),LSFT(LGUI(KC_1)),LSFT(LGUI(KC_3)),LSFT(LGUI(KC_5)),M(M_LAYER_IS_SYMBOLS), */
