@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   KC_ESCAPE,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,M(M_LAYER_IS_KEYMACS),
 	   ALT_T(KC_TAB),KC_Q,KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 	   KC_LCTL,LT(LAYER_NUMPAD,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
-	   KC_LSHIFT,LT(LAYER_AUXCHARS,KC_Z),KC_COMMA,KC_U,KC_K,SFT_T(KC_J),M(M_EMACS_SELECT),
+	   KC_LSHIFT,LT(LAYER_AUXCHARS,KC_Z),KC_COMMA,KC_U,KC_K,LT(LAYER_AUXCHARS,KC_J),M(M_EMACS_SELECT),
 	   TG(LAYER_KEYMACS),_____,_____,KC_UNDS,MO(LAYER_MOUSE),
 	   // left thumb
 	   LCTL(KC_G),KC_WWW_BACK,LCTL(KC_V),
@@ -141,7 +141,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   TG(LAYER_NUMPAD),KC_ASTR,KC_SCOLON,KC_DQUO,KC_QUES,KC_EQUAL,KC_BSPACE,
 	   OSL(LAYER_FN),ALT_T(KC_V),KC_W,KC_D,KC_Y,KC_QUOTE,KC_RALT,
 	   CTL_T(KC_L),KC_O,KC_T,KC_I,LT(LAYER_NUMPAD,KC_H),KC_RCTL,
-	   OSL(LAYER_WM),SFT_T(KC_M),KC_C,KC_X,KC_DOT,LT(LAYER_AUXCHARS,KC_SLASH),KC_RSHIFT,
+	   OSL(LAYER_WM),LT(LAYER_AUXCHARS,KC_M),KC_C,KC_X,KC_DOT,LT(LAYER_AUXCHARS,KC_SLASH),KC_RSHIFT,
 	   M(KEYNAV),KC_UNDS,_____,_____,TT(LAYER_RUSSIAN),
 	   // right thumb
 	   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
@@ -225,7 +225,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   KC_ESCAPE,TD(TD_LELKILAPKI),KC_MINUS,TD(TD_DASH),KC_6,KC_SLASH,M(M_LAYER_IS_RUSSIAN),
 		   KC_LALT,KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
 		   KC_LCTL,LT(LAYER_NUMPAD,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
-		   KC_LSHIFT,LT(LAYER_AUXCHARS_RU,KC_Z),KC_X,KC_C,KC_V,SFT_T(KC_B),_____,
+		   KC_LSHIFT,LT(LAYER_AUXCHARS_RU,KC_Z),KC_X,KC_C,KC_V,LT(LAYER_AUXCHARS_RU,KC_B),_____,
 		   TO(LAYER_KEYMACS),_____,_____,KC_9,_____,
 		   // left thumb
 		   LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
@@ -234,7 +234,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,KC_7,KC_LBRACKET,KC_9,TD(TD_RELKILAPKI),_____,
 		   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
 		   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_NUMPAD,KC_SCOLON),KC_RCTL,
-		   OSL(LAYER_WM),SFT_T(KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_AUXCHARS_RU,KC_QUOTE),KC_RSHIFT,
+		   OSL(LAYER_WM),LT(LAYER_AUXCHARS_RU,KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_AUXCHARS_RU,KC_QUOTE),KC_RSHIFT,
 		   _____,KC_5,KC_EQUAL,_____,_____,
 		   // right thumb
 		   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
@@ -363,6 +363,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   ,_____,LT(LAYER_WM,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
 
   // Control layer for line and page navigation
+  // based on https://github.com/keyboard-ergonomics/control-layer.
   // TODO maybe combine it with WM control layer?
   [LAYER_CONTROL] \
   = KEYMAP(// left fingers
@@ -377,29 +378,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   		   LGUI(KC_F5),RGUI(KC_F6),RGUI(KC_F12),_____,_____,_____,_____,
   		   _____,LCTL(KC_V),LALT(KC_W),KC_DELETE,LCTL(KC_Y),_____,_____,
   		   _____,KC_LEFT,KC_RIGHT,KC_BSPACE,KC_TAB,_____,
-  		   _____,KC_ENTER,LCTL(KC_C),LCTL(KC_X),LCTL(LSFT(KC_DOT)),LCTL(KC_SLASH),_____,
+  		   _____,KC_ENTER,LCTL(KC_C),LCTL(KC_X),LCTL(KC_V),LCTL(KC_SLASH),_____,
   		   _____,_____,_____,_____,_____,
   		   // right thumb
   		   _____,_____,_____,_____,KC_ENTER,KC_SPACE),
 
-  // Fn keys
+/* Fn keys for the right hand (left hand the same as for Symbols layer)
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |   `  |   !  |   -  |   :  |   +  |      |           |      |   *  |   F7 |   F8 |   F9 |   =  |   BSP  |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |   ́  |   %  |   [  |   ]  |      |      |           |      | Alt  |   F4 |   F5 |   F6 |   +  |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |   _  |   (  |.  )  |      |------|           |------| Ctrl |.  F1 |   F2 |   F3 |   -  |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |   ,  |   ~  |   @  |      |      |           |      | Shift|  F11 |  F10 |  F12 |   /  |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |   _  |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */  
   [LAYER_FN] \
   = KEYMAP(// left fingers
-		   _____,KC_F13,KC_F14,KC_F15,KC_F16,_____,M(M_LAYER_IS_FN),
-	   KC_LALT,KC_F9,KC_F10,KC_F11,KC_F12,KC_RALT,_____,
-	   KC_LCTL,KC_F5,KC_F6,KC_F7,KC_F8,KC_RCTRL,
-	   KC_LSHIFT,KC_F1,KC_F2,KC_F3,KC_F4,KC_RSHIFT,_____,
-	   TO(LAYER_KEYMACS),_____,_____,_____,_____,
-	   // left thumb
-	   _____,_____,_____,_____,_____,_____,
-	   // right fingers
-	   _____,_____,KC_F13,KC_F14,KC_F15,KC_F16,_____,
-	   _____,KC_LALT,KC_F9,KC_F10,KC_F11,KC_F12,KC_RALT,
-	   KC_LCTL,KC_F5,KC_F6,KC_F7,KC_F8,KC_RCTRL,
-	   _____,KC_LSHIFT,KC_F1,KC_F2,KC_F3,KC_F4,KC_RSHIFT,
-	   _____,_____,_____,_____,_____,
-	   // right thumb
-	   _____,_____,_____,_____,_____,_____),
+		   KC_NUMLOCK,TD(TD_GRAVEACCENT),KC_EXLM,TD(TD_DASH),KC_COLON,KC_PLUS,M(M_LAYER_IS_NUMPAD),
+		   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
+		   KC_LCTL,KC_NO,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
+		   KC_LSHIFT,KC_NO,KC_LABK,KC_TILD,KC_AT,KC_TAB,_____,
+		   _____,_____,_____,_____,_____,
+		   // left thumb 
+		   _____,_____,_____,
+		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_WM,KC_ENTER),_____,
+		   // right fingers
+		   _____,KC_KP_ASTERISK,KC_F7,KC_F8,KC_F9,KC_EQUAL,KC_BSPACE,
+		   KC_RALT,KC_PIPE,KC_F4,KC_F5,KC_F6,KC_KP_PLUS,KC_RALT,
+		   KC_RCTL,KC_F1,KC_F2,KC_F3,KC_KP_MINUS,KC_RCTRL,
+		   KC_RSHIFT,KC_KP_ENTER,KC_F11,KC_F10,KC_F12,_____,KC_RSHIFT,
+		   _____,_____,_____,_____,_____,
+		   // right thumb
+		   _____,_____,_____
+		   ,_____,LT(LAYER_WM,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
 
   // Media controls and Colors
   // TODO adapt more for mpv
