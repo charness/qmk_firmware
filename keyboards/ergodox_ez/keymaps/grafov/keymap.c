@@ -232,7 +232,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   // right fingers
 		   _____,_____,KC_9,KC_LBRACKET,TD(TD_YUCOLON),TD(TD_RELKILAPKI),_____,
 		   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
-		   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_NUMPAD,KC_QUES),KC_RCTL,
+		   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_NUMPAD,KC_COLON),KC_RCTL,
 		   OSL(LAYER_WM),LT(LAYER_AUXCHARS_RU,KC_N),TD(TD_SHSIG),KC_COMMA,KC_7,LT(LAYER_AUXCHARS_RU,KC_QUOTE),KC_RSHIFT,
 		   _____,_____,_____,_____,_____,
 		   // right thumb
@@ -614,7 +614,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	  }
 	  break;
     case LAYER_RUSSIAN:
-	  TAP(RUS); // switch to Russian
+	  if (old_layer != LAYER_MOUSE) {
+        TAP(RUS); // switch to Russian
+	  }
 	  break;
     case LAYER_WM:
 	  if (old_layer == LAYER_RUSSIAN) {
