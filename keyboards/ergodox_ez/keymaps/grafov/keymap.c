@@ -53,8 +53,6 @@ enum {
   LAYER_WM
 };
 
-// TODO ¹²³‰↑∞←→’‘≠€®™¥§
-
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
   EPRM,
@@ -99,6 +97,8 @@ enum {
   TD_LELKILAPKI,
   TD_RELKILAPKI,
   TD_RUCOLON,
+  TD_DVOETOCHIE,
+  TD_YUSEMICOLON,
 };
 
 
@@ -120,17 +120,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | LAT  |      |      |   _  |      |                                       |      |      |      |      |  RUS |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
+ *                                        |      | Back |       | Frwd | CtlW |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | CtlV |       |      |      |      |
+ *                                 |      |      | CtlV |       | CtlR |      |      |
  *                                 |  SPC |  Ret |------|       |------| Ret  | SPC  |
- *                                 |      |      | CtlC |       |      |      |      |
+ *                                 |      |      | CtlC |       | AltX |      |      |
  *                                 `--------------------'       `--------------------'
  */    
   [LAYER_KEYMACS] \
   = KEYMAP( // left fingers
 	   KC_ESCAPE,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,M(M_LAYER_IS_KEYMACS),
-	   ALT_T(KC_TAB),KC_Q,KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
+ 	   ALT_T(KC_TAB),KC_Q,KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 	   KC_LCTL,LT(LAYER_NUMPAD,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 	   KC_LSHIFT,LT(LAYER_AUXCHARS,KC_Z),KC_COMMA,KC_U,KC_K,LT(LAYER_AUXCHARS,KC_J),M(M_EMACS_SELECT),
 	   TG(LAYER_KEYMACS),_____,_____,KC_UNDS,MO(LAYER_MOUSE),
@@ -145,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   M(KEYNAV),KC_UNDS,_____,_____,TT(LAYER_RUSSIAN),
 	   // right thumb
 	   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
-	   ALT_T(KC_APPLICATION),KC_ENTER,LT(LAYER_CONTROL,KC_SPACE)),
+ 	   ALT_T(KC_APPLICATION),KC_ENTER,LT(LAYER_CONTROL,KC_SPACE)),
 
 /* Symbol Layer
  *
@@ -189,18 +189,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,_____,
 		   _____,_____,LT(LAYER_CONTROL,KC_SPACE)),
   
-/* Russian layout
+/* Russian layout with Keymacs compatible punctuatitons
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |  «/„ |   !  |   -  |   ,  |  ё/+ |      |           |      |      |   .  |   х  |   ?  |  »/“ |   BSP  |
+ * |        |  «/„ |   !  |   -  |  ч/: |  ё/+ |      |           |      |   *  |  ю/; |   х  |   ?  |  »/“ |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   й  |   ц  |   у  |   к  |   е  |      |           |      |   н  |   г  |   ш  |   щ  |   з  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   ф  |   ы  |   в  |.  а  |   п  |------|           |------|   р  |.  о  |   л  |   д  |   ж  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   я  |   ч  |   с  |   м  |   и  |      |           |      |   т  |  ь/ъ |   б  |   ю  |   э  |        |
+ * |        |   я  |   ,  |   с  |   м  |   и  |      |           |      |   т  |  ь/ъ |   б  |   .  |   э  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LAT  |      |      |   _  |      |                                       |      |   :  |   ;  |      |      |
+ *   | LAT  |      |      |   _  |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -222,20 +222,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_RUSSIAN] \
   = KEYMAP(
 		   // left fingers
-		   KC_ESCAPE,TD(TD_LELKILAPKI),KC_MINUS,TD(TD_DASH),KC_6,KC_SLASH,M(M_LAYER_IS_RUSSIAN),
+		   KC_ESCAPE,TD(TD_LELKILAPKI),KC_MINUS,TD(TD_DASH),TD(TD_DVOETOCHIE),KC_SLASH,M(M_LAYER_IS_RUSSIAN),
 		   KC_LALT,KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
 		   KC_LCTL,LT(LAYER_NUMPAD,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
-		   KC_LSHIFT,LT(LAYER_AUXCHARS_RU,KC_Z),KC_X,KC_C,KC_V,LT(LAYER_AUXCHARS_RU,KC_B),_____,
+		   KC_LSHIFT,LT(LAYER_AUXCHARS_RU,KC_Z),KC_6,KC_C,KC_V,LT(LAYER_AUXCHARS_RU,KC_B),_____,
 		   TO(LAYER_KEYMACS),_____,_____,KC_9,_____,
 		   // left thumb
 		   LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
 		   LT(LAYER_CONTROL,KC_SPACE),_____,KC_MINUS,
 		   // right fingers
-		   _____,_____,KC_7,KC_LBRACKET,KC_9,TD(TD_RELKILAPKI),_____,
+		   _____,_____,TD(TD_YUSEMICOLON),KC_LBRACKET,KC_9,TD(TD_RELKILAPKI),_____,
 		   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
 		   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_NUMPAD,KC_SCOLON),KC_RCTL,
-		   OSL(LAYER_WM),LT(LAYER_AUXCHARS_RU,KC_N),TD(TD_SHSIG),KC_COMMA,KC_DOT,LT(LAYER_AUXCHARS_RU,KC_QUOTE),KC_RSHIFT,
-		   _____,KC_5,KC_EQUAL,_____,_____,
+		   OSL(LAYER_WM),LT(LAYER_AUXCHARS_RU,KC_N),TD(TD_SHSIG),KC_COMMA,KC_7,LT(LAYER_AUXCHARS_RU,KC_QUOTE),KC_RSHIFT,
+		   _____,_____,_____,_____,_____,
 		   // right thumb
 		   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
 		   ALT_T(KC_APPLICATION),_____,LT(LAYER_CONTROL,KC_SPACE)),
@@ -243,7 +243,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Symbol Layer for Russian layout
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |   `  |   !  |   -  |   ,  |   +  |      |           |      |   *  |   .  |   "  |   ?  |   =  |   BSP  |
+ * |        |   `  |   !  |   -  |   :  |   +  |      |           |      |   *  |   ;  |   "  |   ?  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   $  |   ^  |   №  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -251,7 +251,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   <  |   ~  |   @  |      |      |           |      |      |   =  |   \  |   >  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |   _  |      |                                       |      |   :  |   ;  |      |      |
+ *   |      |      |      |   _  |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -276,7 +276,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   _____,KC_PIPE,KC_AMPR,KC_DLR,KC_CIRC,M(RU_NOSIGN),KC_RALT,
 	   KC_NO,KC_LCBR,KC_RCBR,KC_HASH,KC_NO,KC_RCTRL,
 	   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_RABK,KC_NO,KC_RSHIFT,
-	   _____,KC_COLON,KC_SCOLON,_____,_____,
+	   _____,_____,_____,_____,_____,
 	   // right thumb
 	   _____,_____,_____,
 	   _____,_____,LT(LAYER_CONTROL,KC_ENTER)),
@@ -937,4 +937,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_LELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_left),
   [TD_RELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_right),
   [TD_RUCOLON] = ACTION_TAP_DANCE_FN(dance_rucolon),
+  [TD_DVOETOCHIE] = ACTION_TAP_DANCE_DOUBLE(KC_X,KC_5), // ч/:
+  [TD_YUSEMICOLON] = ACTION_TAP_DANCE_DOUBLE(KC_DOT,KC_EQUAL), // ю/;
 };
