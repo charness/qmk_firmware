@@ -97,6 +97,7 @@ enum {
   TD_LELKILAPKI,
   TD_RELKILAPKI,
   TD_CHE,
+  TD_HE,
   TD_YUCOLON,
 };
 
@@ -191,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Russian layout with Keymacs compatible punctuatitons
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |  «/„ |  ч/; |   -  |   !  |  ё/+ |      |           |      |   *  |   ?  |   х  |  ю/: |  »/“ |   BSP  |
+ * |        |  «/„ |  ч/; |   -  |   !  |  ё/+ |      |           |      |   *  |   ?  |  х/" |  ю/: |  »/“ |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |   й  |   ц  |   у  |   к  |   е  |      |           |      |   н  |   г  |   ш  |   щ  |   з  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -230,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
 		   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 		   // right fingers
-		   _____,_____,KC_9,KC_LBRACKET,TD(TD_YUCOLON),TD(TD_RELKILAPKI),_____,
+		   _____,_____,KC_9,TD(TD_HE),TD(TD_YUCOLON),TD(TD_RELKILAPKI),_____,
 		   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
 		   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_NUMPAD,KC_COLON),KC_RCTL,
 		   OSL(LAYER_WM),LT(LAYER_AUXCHARS_RU,KC_N),TD(TD_SHSIG),KC_COMMA,KC_7,LT(LAYER_AUXCHARS_RU,KC_QUOTE),KC_RSHIFT,
@@ -923,5 +924,6 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_LELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_left),
   [TD_RELKILAPKI] = ACTION_TAP_DANCE_FN(dance_elkilapki_right),
   [TD_CHE] = ACTION_TAP_DANCE_DOUBLE(KC_X,KC_EQUAL), // ч/;
+  [TD_HE] = ACTION_TAP_DANCE_DOUBLE(KC_LBRACKET,KC_4), // х/"
   [TD_YUCOLON] = ACTION_TAP_DANCE_DOUBLE(KC_DOT,KC_5), // ю/:
 };
