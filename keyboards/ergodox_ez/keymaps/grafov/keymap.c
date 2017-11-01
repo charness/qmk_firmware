@@ -111,9 +111,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   Esc  |   `  |   !  |   -  |   :  |   +  |      |           |      |   *  |   ;  |   "  |   ?  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   Alt  |   q  |   b  |   p  |   f  |   g  |      |           |      |   v  |   w  |   d  |   y  |   '  |   Alt  |
+ * |   Alt  |   q  |   b  |   p  |   f  |   g  |      |           |      |   v  |   w  |   l  |   y  |   '  |   Alt  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |   Ctl  |   r  |   a  |   e  |.  n  |   s  |------|           |------|   l  |.  o  |   t  |   i  |   h  |   Ctl  |
+ * |   Ctl  |   r  |   a  |   e  |.  n  |   s  |------|           |------|   d  |.  o  |   t  |   i  |   h  |   Ctl  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |  Shift |   z  |   ,  |   u  |   k  |   j  |      |           |      |   m  |   c  |   x  |   .  |   /  |  Shift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -126,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |  SPC |  Ret |------|       |------| Ret  | SPC  |
  *                                 |      |      | CtlC |       | AltX |      |      |
  *                                 `--------------------'       `--------------------'
- */    
+ */
   [LAYER_KEYMACS] \
   = KEYMAP( // left fingers
 	   KC_ESCAPE,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,M(M_LAYER_IS_KEYMACS),
@@ -139,8 +139,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   LT(LAYER_CONTROL,KC_SPACE),KC_ENTER,LCTL(KC_C),
 	   // right fingers 
 	   TG(LAYER_NUMPAD),KC_ASTR,KC_SCOLON,KC_DQUO,KC_QUES,KC_EQUAL,KC_BSPACE,
-	   OSL(LAYER_FN),ALT_T(KC_V),KC_W,KC_D,KC_Y,KC_QUOTE,KC_RALT,
-	   CTL_T(KC_L),KC_O,KC_T,KC_I,LT(LAYER_NUMPAD,KC_H),KC_RCTL,
+	   OSL(LAYER_FN),ALT_T(KC_V),KC_W,KC_L,KC_Y,KC_QUOTE,KC_RALT,
+	   CTL_T(KC_D),KC_O,KC_T,KC_I,LT(LAYER_NUMPAD,KC_H),KC_RCTL,
 	   OSL(LAYER_WM),LT(LAYER_AUXCHARS,KC_M),KC_C,KC_X,KC_DOT,LT(LAYER_AUXCHARS,KC_SLASH),KC_RSHIFT,
 	   M(KEYNAV),KC_UNDS,_____,_____,TT(LAYER_RUSSIAN),
 	   // right thumb
@@ -245,7 +245,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   `  |   !  |   -  |   :  |   +  |      |           |      |   *  |   ;  |   "  |   ?  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   $  |   ^  |   №  |        |
+ * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   ^  |   $  |   №  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   _  |   (  |.  )  |      |------|           |------|      |.  {  |   }  |   #  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -273,7 +273,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 	   // right fingers
 	   _____,KC_ASTR,KC_SCOLON,KC_LBRACKET,KC_QUES,KC_EQUAL,_____,
-	   _____,KC_PIPE,KC_AMPR,KC_DLR,KC_CIRC,M(RU_NOSIGN),KC_RALT,
+	   _____,KC_PIPE,KC_AMPR,KC_CIRC,KC_DLR,M(RU_NOSIGN),KC_RALT,
 	   KC_NO,KC_LCBR,KC_RCBR,KC_HASH,KC_NO,KC_RCTRL,
 	   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_RABK,KC_NO,KC_RSHIFT,
 	   _____,_____,_____,_____,_____,
@@ -295,7 +295,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   KC_MS_ACCEL2,_____,_____,_____,_____,_____,_____,
 	   KC_MS_ACCEL1,_____,_____,_____,KC_MS_BTN3,_____,_____,
 	   _____,KC_MS_LEFT,KC_MS_RIGHT,KC_MS_BTN1,_____,_____,
-	   KC_MS_ACCEL0,_____,KC_MS_WH_LEFT,KC_MS_WH_RIGHT,KC_MS_BTN2,_____,_____,
+	   KC_MS_ACCEL0,KC_ENTER,KC_MS_WH_LEFT,KC_MS_WH_RIGHT,KC_MS_BTN2,_____,_____,
 	   _____,KC_MS_BTN1,KC_MS_BTN3,KC_MS_BTN2,_____,
 	   // right thumb
 	   _____,_____,_____,_____,_____,_____),
@@ -362,24 +362,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,_____
 		   ,_____,LT(LAYER_WM,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
 
-  // Control layer for line and page navigation
-  // based on https://github.com/keyboard-ergonomics/control-layer.
-  // TODO maybe combine it with WM control layer?
+/* Control layer for line and page navigation
+ * based on https://github.com/keyboard-ergonomics/control-layer.
+ * Copypaste keys for Emacs (Alt+W,Ctl+W,Ctl+Y) and WordStar-like (Ctl+C,Ctl+X,Ctl+V) bindinds.
+ * Copypaste keys for right hand because I'm using trackball by left hand.
+ * 
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |  Esc   |      |      |      |      |      |      |           |      |      |      |      |      |      |   BSP  |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |  Alt   |      |      |      |      | Esc  |      |           |      | CtlV | AltW | CtlW | CtlY |      | Alt    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |  Ctrl  | CtlR | Home |  Up  |. Down| End  |------|           |------|  Del |. Left| Right|  BSP |  Tab | Ctrl   |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | Shift  |      |SftTab| PgUp | PgDn | Tab  |      |           |      | Enter| CtlC | CtlX | CtlV | Ctl/ | Shift  |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      | Back |       | Fwd  |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |Reload|      |      |
+ *                                 | SPC  | Enter|------|       |------| Enter| SPC  |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */  
   [LAYER_CONTROL] \
   = KEYMAP(// left fingers
-  		   TO(LAYER_MEDIA),_____,_____,_____,LGUI(KC_F10),LGUI(KC_F11),M(M_LAYER_IS_CONTROL),
-  		   _____,_____,KC_LEFT,KC_UP,KC_RIGHT,KC_ESCAPE,_____,
-  		   _____,LSFT(KC_TAB),KC_HOME,KC_UP,KC_DOWN,KC_END,
-  		   _____,RCTL(KC_Z),RCTL(RSFT(KC_COMMA)),KC_PGUP,KC_PGDOWN,KC_TAB,_____,
-  		   TO(LAYER_KEYMACS),_____,_____,_____,_____,
+  		   TO(LAYER_MEDIA),XXXXX,XXXXX,XXXXX,LGUI(KC_F10),LGUI(KC_F11),M(M_LAYER_IS_CONTROL),
+  		   _____,XXXXX,KC_LEFT,KC_UP,KC_RIGHT,KC_ESCAPE,XXXXX,
+  		   _____,RCTL(KC_R),KC_HOME,KC_UP,KC_DOWN,KC_END,
+  		   _____,RCTL(KC_Z),RSFT(KC_TAB),KC_PGUP,KC_PGDOWN,KC_TAB,XXXXX,
+  		   TO(LAYER_KEYMACS),XXXXX,XXXXX,XXXXX,XXXXX,
   		   // left thumb
   		   KC_SPACE,KC_ENTER,_____,_____,_____,_____,
   		   // right fingers
-  		   LGUI(KC_F5),RGUI(KC_F6),RGUI(KC_F12),_____,_____,_____,_____,
-  		   _____,LCTL(KC_V),LALT(KC_W),KC_DELETE,LCTL(KC_Y),_____,_____,
-  		   _____,KC_LEFT,KC_RIGHT,KC_BSPACE,KC_TAB,_____,
-  		   _____,KC_ENTER,LCTL(KC_C),LCTL(KC_X),LCTL(KC_V),LCTL(KC_SLASH),_____,
-  		   _____,_____,_____,_____,_____,
+  		   LGUI(KC_F5),RGUI(KC_F6),RGUI(KC_F12),XXXXX,XXXXX,XXXXX,_____,
+  		   XXXXX,LCTL(KC_V),LALT(KC_W),LCTL(KC_W),LCTL(KC_Y),XXXXX,_____,
+  		   KC_DELETE,KC_LEFT,KC_RIGHT,KC_BSPACE,KC_TAB,_____,
+  		   XXXXX,KC_ENTER,LCTL(KC_C),LCTL(KC_X),LCTL(KC_V),LCTL(KC_SLASH),_____,
+  		   XXXXX,XXXXX,XXXXX,XXXXX,XXXXX,
   		   // right thumb
   		   _____,_____,_____,_____,KC_ENTER,KC_SPACE),
 
@@ -446,6 +467,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   RGB_TOG,RGB_SLD,_____,
 	   _____,RGB_HUD,RGB_HUI),
 
+  // WIP! Experimental!
   // XXX Rare symbols Unicode input
   // TODO  ¹²³‰↑∞←→’‘≠ €®™¥§
   /* Rare symbols Layer
@@ -453,7 +475,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,--------------------------------------------------.           ,--------------------------------------------------.
    * |        |   `  |   ¹  |   ²  |   ³  |   +  |      |           |      |   §  |   ;  |   ∞  |   !  |   ≠  |   BSP |
    * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-   * |        |      |   ‰ |   #  |      |      |      |           |      |      |      |  €/¥ |      |      |        |
+   * |        |      |   ‰ |      |      |      |      |           |      |      |      |  €/¥ |      |      |        |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
    * |        |      |      |   ↑  |.     |      |------|           |------|      |.  ←  |   →  |      |      |        |
    * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -500,32 +522,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   LT(LAYER_CONTROL,KC_SPACE),_____,LCTL(KC_C),
 	   // right fingers 
 	   _____,KC_ASTR,KC_SCOLON,KC_DQUO,KC_QUES,KC_EQUAL,KC_BSPACE,
-	   M(M_WMUP),ALT_T(KC_V),KC_W,KC_D,KC_Y,KC_QUOTE,KC_RALT,
-	   CTL_T(KC_L),KC_O,KC_T,KC_I,LT(LAYER_NUMPAD,KC_H),KC_RCTL,
+	   M(M_WMUP),ALT_T(KC_V),KC_W,KC_L,KC_Y,KC_QUOTE,KC_RALT,
+	   CTL_T(KC_D),KC_O,KC_T,KC_I,LT(LAYER_NUMPAD,KC_H),KC_RCTL,
 	   M(M_WMDOWN),SFT_T(KC_M),KC_C,KC_X,KC_DOT,KC_SLASH,KC_RSHIFT,
 	   M(KEYNAV),KC_UNDS,_____,_____,TO(LAYER_RUSSIAN),
 	   // right thumb
 	   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
 	   ALT_T(KC_APPLICATION),_____,LT(LAYER_CONTROL,KC_SPACE)),
-
-
-	   /* 	   XKBHELP,LSFT(LGUI(KC_9)),LSFT(LGUI(KC_7)),LSFT(LGUI(KC_1)),LSFT(LGUI(KC_3)),LSFT(LGUI(KC_5)),M(M_LAYER_IS_SYMBOLS), */
-	   /* _____,LGUI(KC_9),LGUI(KC_7),LGUI(KC_1),LGUI(KC_3),LGUI(KC_5),LGUI(KC_F10), */
-	   /* _____,LGUI(KC_R),_____,LGUI(KC_UP),LGUI(KC_DOWN),_____, */
-	   /* _____,LGUI(KC_Z),_____,_____,_____,LGUI(KC_J),LGUI(KC_F11), */
-	   /* TO(LAYER_KEYMACS),_____,_____,_____,_____, */
-	   /* // left thumb */
-	   /* _____,_____,_____, */
-	   /* LGUI(KC_SPACE),KC_ENTER,_____, */
-	   /* // right fingers */
-	   /* _____,LSFT(RGUI(KC_6)),LSFT(RGUI(KC_2)),LSFT(RGUI(KC_0)),LSFT(RGUI(KC_4)),LSFT(RGUI(KC_8)),LGUI(KC_F9), */
-	   /* LGUI(KC_F12),RGUI(KC_6),RGUI(KC_2),RGUI(KC_0),RGUI(KC_4),RGUI(KC_8),LGUI(KC_F7), */
-	   /* _____,RGUI(KC_LEFT),RGUI(KC_RIGHT),_____,RGUI(KC_H),LGUI(KC_F6), */
-	   /* LGUI(KC_F11),_____,_____,RGUI(KC_X),RGUI(KC_V),_____,LGUI(KC_F5), */
-	   /* _____,_____,_____,_____,_____, */
-	   /* // right thumb */
-	   /* _____,_____,_____, */
-	   /* _____,KC_ENTER,RGUI(KC_SPACE)), */
 
 };
 
