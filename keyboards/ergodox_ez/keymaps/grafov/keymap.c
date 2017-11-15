@@ -123,14 +123,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        |      | Back |       | Frwd | CtlW |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | CtlV |       | CtlR |      |      |
- *                                 |  SPC |  Ret |------|       |------| Ret  | SPC  |
+ *                                 |  SPC |  Ret |------|       |------| Tab  | SPC  |
  *                                 |      |      | CtlC |       | AltX |      |      |
  *                                 `--------------------'       `--------------------'
  */
   [LAYER_KEYMACS] \
   = KEYMAP( // left fingers
 		   KC_ESCAPE,KC_GRAVE,KC_SCOLON,KC_MINUS,KC_EXLM,KC_PLUS,M(M_LAYER_IS_KEYMACS),
-		   ALT_T(KC_TAB),KC_Q,KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
+		   KC_LALT,KC_Q,KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 		   KC_LCTL,LT(LAYER_NUMPAD,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 		   KC_LSHIFT,LT(LAYER_AUXCHARS,KC_Z),KC_COMMA,KC_U,KC_K,LT(LAYER_AUXCHARS,KC_J),M(M_EMACS_SELECT),
 		   TG(LAYER_KEYMACS),_____,_____,KC_UNDS,MO(LAYER_MOUSE),
@@ -145,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   M(KEYNAV),KC_UNDS,_____,_____,TT(LAYER_RUSSIAN),
 		   // right thumb
 		   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
-		   ALT_T(KC_APPLICATION),KC_ENTER,LT(LAYER_CONTROL,KC_SPACE)),
+		   ALT_T(KC_APPLICATION),KC_TAB,LT(LAYER_CONTROL,KC_SPACE)),
 
 /* Symbol Layer
  *
@@ -360,7 +360,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,_____,_____,_____,
 		   // right thumb
 		   _____,_____,_____
-		   ,_____,LT(LAYER_WM,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
+		   ,_____,LT(LAYER_WM,KC_TAB),LT(LAYER_CONTROL,KC_SPACE)),
 
 /* Control layer for line and page navigation
  * based on https://github.com/keyboard-ergonomics/control-layer.
@@ -402,7 +402,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   		   XXXXX,KC_ENTER,LCTL(KC_C),LCTL(KC_X),LCTL(KC_V),LCTL(KC_SLASH),_____,
   		   XXXXX,XXXXX,XXXXX,XXXXX,XXXXX,
   		   // right thumb
-  		   _____,_____,_____,_____,KC_ENTER,KC_SPACE),
+  		   _____,_____,_____,_____,KC_TAB,KC_SPACE),
 
 /* Fn keys for the right hand (left hand the same as for Symbols layer)
  *
@@ -443,7 +443,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,_____,_____,_____,
 		   // right thumb
 		   _____,_____,_____
-		   ,_____,LT(LAYER_WM,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
+		   ,_____,LT(LAYER_WM,KC_TAB),LT(LAYER_CONTROL,KC_SPACE)),
 
   // Media controls and Colors
   // TODO adapt more for mpv
