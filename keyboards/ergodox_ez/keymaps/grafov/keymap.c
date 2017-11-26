@@ -109,43 +109,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * https://github.com/keyboard-ergonomics/keymacs
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   Esc  |   `  |   ;  |   -  |   !  |   +  |      |           |      |   *  |   ?  |   "  |   :  |   =  |   BSP  |
+ * |   Esc  |   `  |   ;  |   -  |   !  |   +  | DEL  |           | NumLk|   *  |   ?  |   "  |   :  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   Alt  |   q  |   b  |   p  |   f  |   g  |      |           |      |   v  |   w  |   l  |   y  |   '  |   Alt  |
+ * |   Alt  |   q  |   b  |   p  |   f  |   g  |  Fn  |           |  Fn  |   v  |   w  |   l  |   y  |   '  |   Alt  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |   Ctl  |   r  |   a  |   e  |.  n  |   s  |------|           |------|   d  |.  o  |   t  |   i  |   h  |   Ctl  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |  Shift |   z  |   ,  |   u  |   k  |   j  |      |           |      |   m  |   c  |   x  |   .  |   /  |  Shift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LAT  |      |      |   _  |      |                                       |      |      |      |      |  RUS |
+ *   | LAT  |  LAT | Caps |   _  |      |                                       |      |      | Caps |  RUS |  RUS |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      | Back |       | Frwd | CtlW |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      | CtlV |       | CtlR |      |      |
- *                                 |  SPC |  Ret |------|       |------| Tab  | SPC  |
- *                                 |      |      | CtlC |       | AltX |      |      |
+ *                                 |      |      | CtlV |       | Rfrsh|      |      |
+ *                                 |  SPC |  Tab |------|       |------| Ret  | SPC  |
+ *                                 |      |      | CtlC |       | Ins  |      |      |
  *                                 `--------------------'       `--------------------'
  */
   [LAYER_KEYMACS] \
   = KEYMAP( // left fingers
-		   KC_ESCAPE,KC_GRAVE,KC_SCOLON,KC_MINUS,KC_EXLM,KC_PLUS,M(M_LAYER_IS_KEYMACS),
+		   KC_ESCAPE,KC_GRAVE,KC_SCOLON,KC_MINUS,KC_EXLM,KC_PLUS,KC_DELETE,
 		   KC_LALT,KC_Q,KC_B,KC_P,KC_F,ALGR_T(KC_G),OSL(LAYER_FN),
 		   KC_LCTL,LT(LAYER_NUMPAD,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 		   KC_LSHIFT,LT(LAYER_AUXCHARS,KC_Z),KC_COMMA,KC_U,KC_K,LT(LAYER_AUXCHARS,KC_J),M(M_EMACS_SELECT),
-		   TG(LAYER_KEYMACS),_____,_____,KC_UNDS,MO(LAYER_MOUSE),
+		   TG(LAYER_KEYMACS),TG(LAYER_KEYMACS),KC_CAPSLOCK,KC_UNDS,MO(LAYER_MOUSE),
 		   // left thumb
 		   LCTL(KC_G),KC_WWW_BACK,LCTL(KC_V),
-		   LT(LAYER_CONTROL,KC_SPACE),KC_ENTER,LCTL(KC_C),
+		   LT(LAYER_CONTROL,KC_SPACE),KC_TAB,LCTL(KC_C),
 		   // right fingers 
 		   TG(LAYER_NUMPAD),KC_ASTR,KC_QUES,KC_DQUO,KC_COLON,KC_EQUAL,KC_BSPACE,
 		   OSL(LAYER_FN),ALT_T(KC_V),KC_W,KC_L,KC_Y,KC_QUOTE,KC_RALT,
 		   CTL_T(KC_D),KC_O,KC_T,KC_I,LT(LAYER_NUMPAD,KC_H),KC_RCTL,
 		   OSL(LAYER_WM),LT(LAYER_AUXCHARS,KC_M),KC_C,KC_X,KC_DOT,LT(LAYER_AUXCHARS,KC_SLASH),KC_RSHIFT,
-		   M(KEYNAV),KC_UNDS,_____,_____,TT(LAYER_RUSSIAN),
+		   M(KEYNAV),KC_UNDS,KC_CAPSLOCK,TT(LAYER_RUSSIAN),TT(LAYER_RUSSIAN),
 		   // right thumb
 		   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
-		   ALT_T(KC_APPLICATION),KC_TAB,LT(LAYER_CONTROL,KC_SPACE)),
+		   KC_INSERT,KC_ENTER,LT(LAYER_CONTROL,KC_SPACE)),
 
 /* Symbol Layer
  *
@@ -200,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   я  |   ,  |   с  |   м  |   и  |      |           |      |   т  |  ь/ъ |   б  |   .  |   э  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LAT  |      |      |   _  |      |                                       |      |      |      |      |      |
+ *   | LAT  | LAT  | Caps |   _  |      |                                       |      |      | Caps |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -226,7 +226,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   KC_LALT,KC_Q,KC_W,KC_E,KC_R,RALT_T(KC_T),_____,
 		   KC_LCTL,LT(LAYER_NUMPAD,KC_A),KC_S,KC_D,KC_F,RCTL_T(KC_G),
 		   KC_LSHIFT,LT(LAYER_AUXCHARS_RU,KC_Z),KC_6,KC_C,KC_V,LT(LAYER_AUXCHARS_RU,KC_B),_____,
-		   TO(LAYER_KEYMACS),_____,_____,KC_9,_____,
+		   TO(LAYER_KEYMACS),TO(LAYER_KEYMACS),KC_CAPSLOCK,KC_9,_____,
 		   // left thumb
 		   LCTL(KC_G),KC_WWW_BACK,KC_PLUS,
 		   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
@@ -235,7 +235,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,LALT_T(KC_Y),KC_U,KC_I,KC_O,KC_P,KC_RALT,
 		   LCTL_T(KC_H),KC_J,KC_K,KC_L,LT(LAYER_NUMPAD,KC_COLON),KC_RCTL,
 		   OSL(LAYER_WM),LT(LAYER_AUXCHARS_RU,KC_N),TD(TD_SHSIG),KC_COMMA,KC_7,LT(LAYER_AUXCHARS_RU,KC_QUOTE),KC_RSHIFT,
-		   _____,_____,_____,_____,_____,
+		   _____,_____,KC_CAPSLOCK,_____,_____,
 		   // right thumb
 		   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
 		   ALT_T(KC_APPLICATION),_____,LT(LAYER_CONTROL,KC_SPACE)),
