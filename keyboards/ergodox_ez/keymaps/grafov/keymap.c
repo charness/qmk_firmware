@@ -152,9 +152,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   `  |   :  |   -  |   !  |   +  |      |           |Numpad|   *  |   ?  |   "  |   ;  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   $  |   ^  |      |        |
+ * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   $  |   ^  |   '  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |   _  |   (  |.  )  |      |------|           |------|      |.  {  |   }  |   #  |      |        |
+ * |        |      |   _  |   (  |.  )  |      |------|           |------|   №  |.  {  |   }  |   #  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   <  |   @  |   ~  |      |      |           |      |      |   =  |   \  |   >  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -173,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   // left fingers
 		   VRSN,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,M(M_LAYER_IS_AUXCHARS),
 		   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,XXXXX,_____,
-		   KC_LCTL,XXXXX,KC_UNDS,KC_LPRN,KC_RPRN,XXXXX,
+		   KC_LCTL,M(RU_NOSIGN),KC_UNDS,KC_LPRN,KC_RPRN,XXXXX,
 		   KC_LSHIFT,XXXXX,KC_LABK,KC_AT,KC_TILD,KC_TAB,_____,
 		   _____,_____,_____,_____,_____,
 		   // left thumb
@@ -181,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 		   // right fingers
 		   _____,KC_ASTR,KC_QUES,KC_DQUO,KC_SCOLON,KC_EQUAL,_____,
-		   _____,KC_PIPE,KC_AMPR,KC_DLR,KC_CIRC,KC_NO,KC_RALT,
+		   _____,KC_PIPE,KC_AMPR,KC_DLR,KC_CIRC,KC_QUOTE,KC_RALT,
 		   KC_NO,KC_LCBR,KC_RCBR,KC_HASH,XXXXX,KC_RCTRL,
 		   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_RABK,XXXXX,KC_RSHIFT,
 		   _____,_____,_____,_____,_____,
@@ -245,9 +245,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   `  |   :  |   -  |   !  |   +  |      |           |      |   *  |   ?  |   "  |   ;  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   ^  |   $  |   №  |        |
+ * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   ^  |   $  |   '  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |   _  |   (  |.  )  |      |------|           |------|      |.  {  |   }  |   #  |      |        |
+ * |        |      |   _  |   (  |.  )  |      |------|           |------|   №  |.  {  |   }  |   #  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   <  |   @  |   ~  |      |      |           |      |      |   =  |   \  |   >  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -264,17 +264,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_AUXCHARS_RU] \
   = KEYMAP(// left fingers
 	   XKBHELP,KC_GRAVE,KC_COLON,KC_MINUS,KC_EXLM,KC_PLUS,M(M_LAYER_IS_AUXCHARS_RU),
-	   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
-	   KC_LCTL,KC_NO,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
-	   KC_LSHIFT,KC_NO,KC_LABK,KC_AT,KC_TILD,KC_TAB,_____,
+	   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,_____,_____,
+	   KC_LCTL,XXXXX,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
+	   KC_LSHIFT,XXXXX,KC_LABK,KC_AT,KC_TILD,KC_TAB,_____,
 	   _____,_____,_____,SFT_T(KC_9),_____,
 	   // left thumb
 	   _____,_____,_____,
 	   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 	   // right fingers
 	   _____,KC_ASTR,KC_QUES,KC_LBRACKET,KC_SCOLON,KC_EQUAL,_____,
-	   _____,KC_PIPE,KC_AMPR,KC_CIRC,KC_DLR,M(RU_NOSIGN),KC_RALT,
-	   KC_NO,KC_LCBR,KC_RCBR,KC_HASH,KC_NO,KC_RCTRL,
+	   _____,KC_PIPE,KC_AMPR,KC_CIRC,KC_DLR,KC_QUOTE,KC_RALT,
+	   M(RU_NOSIGN),KC_LCBR,KC_RCBR,KC_HASH,KC_NO,KC_RCTRL,
 	   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_RABK,KC_NO,KC_RSHIFT,
 	   _____,_____,_____,_____,_____,
 	   // right thumb
@@ -326,9 +326,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   `  |   :  |   -  |   !  |   +  |      |           |      |   *  |   7  |   8  |   9  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   4  |   5  |   6  |   +  |        |
+ * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   4  |   5  |   6  |   '  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |   _  |   (  |.  )  |      |------|           |------|      |.  1  |   2  |   3  |   -  |        |
+ * |        |      |   _  |   (  |.  )  |      |------|           |------|   №  |.  1  |   2  |   3  |   -  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   ,  |   @  |   ~  |      |      |           |      |      |   =  |   0  |   .  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -345,18 +345,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_NUMPAD] \
   = KEYMAP(// left fingers
 		   KC_NUMLOCK,TD(TD_GRAVEACCENT),KC_COLON,TD(TD_DASH),KC_EXLM,KC_PLUS,M(M_LAYER_IS_NUMPAD),
-		   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,KC_NO,_____,
-		   KC_LCTL,KC_NO,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
-		   KC_LSHIFT,KC_NO,KC_LABK,KC_AT,KC_TILD,KC_TAB,_____,
+		   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,XXXXX,_____,
+		   KC_LCTL,XXXXX,KC_UNDS,KC_LPRN,KC_RPRN,XXXXX,
+		   KC_LSHIFT,XXXXX,KC_LABK,KC_AT,KC_TILD,KC_TAB,_____,
 		   _____,_____,_____,_____,_____,
 		   // left thumb
 		   _____,_____,_____,
 		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_WM,KC_ENTER),_____,
 		   // right fingers
-		   _____,KC_KP_ASTERISK,KC_KP_7,KC_KP_8,KC_KP_9,KC_EQUAL,KC_BSPACE,
-		   KC_TAB,KC_PIPE,KC_KP_4,KC_KP_5,KC_KP_6,KC_KP_PLUS,KC_RALT,
-		   KC_KP_MINUS,KC_KP_1,KC_KP_2,KC_KP_3,KC_KP_MINUS,KC_RCTRL,
-		   KC_KP_SLASH,KC_KP_ENTER,KC_KP_EQUAL,KC_KP_0,KC_KP_DOT,_____,KC_RSHIFT,
+		   _____,KC_KP_ASTERISK,KC_7,KC_8,KC_9,KC_EQUAL,KC_BSPACE,
+		   KC_NUMLOCK,KC_PIPE,KC_4,KC_5,KC_6,KC_QUOTE,KC_RALT,
+		   M(RU_NOSIGN),KC_1,KC_2,KC_3,KC_KP_MINUS,KC_RCTRL,
+		   KC_KP_SLASH,KC_KP_ENTER,KC_KP_EQUAL,KC_0,KC_KP_DOT,_____,KC_RSHIFT,
 		   _____,_____,_____,_____,_____,
 		   // right thumb
 		   _____,_____,_____
