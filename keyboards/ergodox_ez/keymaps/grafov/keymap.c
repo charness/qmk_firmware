@@ -143,9 +143,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   OSL(LAYER_WM),ALT_T(KC_V),KC_W,KC_L,KC_Y,LT(LAYER_NUMPAD,KC_QUOTE),KC_RALT,
 		   CTL_T(KC_D),KC_O,KC_T,KC_I,LT(LAYER_AUXCHARS,KC_H),KC_RCTL,
 		   OSL(LAYER_FN),LT(LAYER_CONTROL,KC_M),KC_C,KC_X,KC_DOT,RSFT_T(KC_SLASH),KC_RSHIFT,
-		   MO(LAYER_MOUSE),M(KEYNAV),_____,TT(LAYER_RUSSIAN),TT(LAYER_RUSSIAN),
+		   MO(LAYER_MOUSE),M(KEYNAV),_____,TO(LAYER_RUSSIAN),TO(LAYER_RUSSIAN),
 		   // right thumb
-		   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH,
+		   KC_WWW_FORWARD,RCTL(KC_W),RCTL(KC_R), // KC_WWW_REFRESH,
 		   KC_INSERT,KC_ENTER,LT(LAYER_CONTROL,KC_SPACE)),
 
 /* Symbol Layer
@@ -217,8 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Э moved to down for right pinky */
   /* Tap dance: */
   /* - double-tap for Ь produces Ъ */
-  /* - unresovled because RCTL_T: double-tap for Е should produce Ё but not yet */
-  
+  /* - unresovled because RCTL_T: double-tap for Е should produce Ё but not yet */  
   /* It has used shift-shift switcher (https://github.com/grafov/shift-shift). */
   [LAYER_RUSSIAN] \
   = KEYMAP(
