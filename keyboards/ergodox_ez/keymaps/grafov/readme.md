@@ -18,12 +18,12 @@ The current layout is:
     |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
     |  Shift |   z  |   ,  |   u  |   k  |   j  |      |           |      |   m  |   c  |   x  |   .  |   /  |  Shift |
     `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-      | LAT  |  LAT | Caps |   _  |      |                                       |      |      | Caps |  RUS |  RUS |
+      | LAT  |  LAT |      |   _  |      |                                       |      |      |      |  RUS |  RUS |
       `----------------------------------'                                       `----------------------------------'
                                            ,-------------.       ,-------------.
                                            |      | Back |       | Frwd | CtlW |
                                     ,------|------|------|       |------+------+------.
-                                    |      |      | CtlV |       | Rfrsh|      |      |
+                                    |      |      | CtlV |       | CtlR |      |      |
                                     |  SPC |  Tab |------|       |------| Ret  | SPC  |
                                     |      |      | CtlC |       | Ins  |      |      |
                                     `--------------------'       `--------------------'
@@ -32,16 +32,15 @@ The current layout is:
 Moved control keys
 ------------------
 
-I think it is traditional remapping for any Ergodox users especially
-for programmers. Large keys on the left and the right sides of the
-keyboard has used for Alt, Ctl, Shift. CapsLock and other historical
-weirds moved away.
+Large keys on the left and on the right sides of the keyboard have
+used for Alt, Ctl, Shift (as mentioned here from top to
+down). CapsLock and other historical keys moved away.
 
 Additional control keys on hold
 -------------------------------
 
-I found very comfortable add even more control keys to the each side
-of the keyboard. So on the left I set:
+I found it is very comfortable to add even more control keys to the
+each side of the keyboard. So on the left I have set:
 
 * T -> RALT_T()
 * G -> RCTL_T()
@@ -58,7 +57,7 @@ index fingers and thumbs. Not for even combos of course. But for
 example hold the B or N by thumb is good alternative for CapsLock mode
 for me.
 
-See first two layouts in the keymap for this feature.
+See the first two layers in the keymap for this feature.
 
 Backlite colors
 ---------------
@@ -106,7 +105,7 @@ though) where Е letter doubled or even tripled (word "длинношеее" for
 example). So I still thinking about placing poor Ё on the keyboard.
 
 I had used custom made
-qsolution [shift-shift](https://github.com/grafov/shift-shift) but
+solution [shift-shift](https://github.com/grafov/shift-shift) but
 with Ergodox I have switched to default `xkb`. The lowest key in the
 right corner of the right part have using for RUS layout and the
 lowest key in the left corner of the left part for the LAT. I put the
@@ -115,3 +114,10 @@ help string with `xkb` settings as keyboard macro. See the usage of:
    #define XKBSTR "setxkbmap -layout \"us,ru(typewriter)\" -option grp:sclk_toggle -option lv3:caps_switch -option misc:typo"
 
 in the code.
+
+## Common punctuations
+
+For both Latin and Russian layers I have tried to map punctuations to the same places. So the dot and comma in the Russian layout have the same places as in the Keymacs. It was required to move two more keys in the Russian layout to unusual places. 
+
+* Dot in the Russian had used the place of `Ч`, so `Ч` have moved to the upper row, where `:` placed in the Keymacs.
+* Comma in the Russian had used the place of `Ю`, so `Ю` have moved to the upper row, where `;` placed in the Keymacs.
