@@ -118,14 +118,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |  Shift |   z  |   ,  |   u  |   k  |   j  |      |           |      |   m  |   c  |   x  |   .  |   /  |  Shift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | LAT  |  LAT | Caps |   _  |      |                                       |      |      | Caps |  RUS |  RUS |
+ *   | LAT  |  LAT | Caps |KEYNAV| M/Tab|                                       |M/Tab |KEYNAV| Caps |  RUS |  RUS |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      | Back |       | Frwd | CtlW |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      | CtlV |       | Rfrsh|      |      |
  *                                 |  SPC |  Tab |------|       |------| Ret  | SPC  |
- *                                 |      |      | CtlC |       | Ins  |      |      |
+ *                                 |/Shift|      | CtlC |       | Ins  |      | /Ctl |
  *                                 `--------------------'       `--------------------'
  */
   [LAYER_KEYMACS] \
@@ -134,19 +134,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   KC_LALT,LT(LAYER_NUMPAD,KC_Q),KC_B,KC_P,KC_F,ALGR_T(KC_G),M(M_WMJUMP),
 		   KC_LCTL,LT(LAYER_AUXCHARS,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 		   KC_LSHIFT,LSFT_T(KC_Z),KC_COMMA,KC_U,KC_K,LT(LAYER_CONTROL,KC_J),M(M_EMACS_SELECT),
-		   TG(LAYER_KEYMACS),TG(LAYER_KEYMACS),_____,M(KEYNAV),MO(LAYER_MOUSE),
+		   TG(LAYER_KEYMACS),TG(LAYER_KEYMACS),_____,M(KEYNAV),LSFT_T(KC_ENTER),
 		   // left thumb
 		   LCTL(KC_G),KC_WWW_BACK,LCTL(KC_V),
-		   LT(LAYER_CONTROL,KC_SPACE),KC_TAB,LCTL(KC_C),
-		   // right fingers 
+		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_MOUSE,KC_TAB),LCTL(KC_C),
+		   // right finger
 		   TG(LAYER_NUMPAD),KC_ASTR,KC_QUES,KC_DQUO,KC_SCOLON,KC_EQUAL,KC_BSPACE,
 		   OSL(LAYER_WM),ALT_T(KC_V),KC_W,KC_L,KC_Y,LT(LAYER_NUMPAD,KC_QUOTE),KC_RALT,
 		   CTL_T(KC_D),KC_O,KC_T,KC_I,LT(LAYER_AUXCHARS,KC_H),KC_RCTL,
 		   OSL(LAYER_FN),LT(LAYER_CONTROL,KC_M),KC_C,KC_X,KC_DOT,RSFT_T(KC_SLASH),KC_RSHIFT,
-		   MO(LAYER_MOUSE),M(KEYNAV),_____,TO(LAYER_RUSSIAN),TO(LAYER_RUSSIAN),
+		   LCTL_T(KC_TAB),M(KEYNAV),KC_CAPSLOCK,TO(LAYER_RUSSIAN),TO(LAYER_RUSSIAN),
 		   // right thumb
-		   KC_WWW_FORWARD,RCTL(KC_W),RCTL(KC_R), // KC_WWW_REFRESH,
-		   KC_INSERT,KC_ENTER,LT(LAYER_CONTROL,KC_SPACE)),
+		   KC_WWW_FORWARD,RCTL(KC_W),KC_WWW_REFRESH, // RCTL(KC_R),
+                   KC_INSERT,LT(LAYER_MOUSE,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
 
 /* Symbol Layer
  *
@@ -159,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   <  |   @  |   ~  |      |      |           |      |      |   =  |   \  |   >  |   /  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |   _  |      |                                       |      |      |      |      |      |
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -175,8 +175,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   VRSN,KC_GRAVE,KC_EXLM,KC_MINUS,KC_COLON,KC_PLUS,M(M_LAYER_IS_AUXCHARS),
 		   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,XXXXX,_____,
 		   KC_LCTL,M(RU_NOSIGN),KC_UNDS,KC_LPRN,KC_RPRN,XXXXX,
-		   KC_LSHIFT,XXXXX,KC_LABK,KC_AT,KC_TILD,KC_TAB,_____,
-		   _____,_____,_____,_____,_____,
+		   KC_LSHIFT,XXXXX,KC_LABK,KC_AT,KC_TILD,KC_ENTER,_____,
+		   _____,_____,_____,_____,KC_TAB,
 		   // left thumb
 		   _____,_____,_____,
 		   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,KC_PIPE,KC_AMPR,KC_DLR,KC_CIRC,KC_QUOTE,KC_RALT,
 		   KC_NO,KC_LCBR,KC_RCBR,KC_HASH,XXXXX,KC_RCTRL,
 		   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_RABK,XXXXX,KC_RSHIFT,
-		   _____,_____,_____,_____,_____,
+		   KC_TAB,_____,_____,_____,_____,
 		   // right thumb
 		   _____,_____,_____,
 		   _____,_____,LT(LAYER_CONTROL,KC_SPACE)),
@@ -266,8 +266,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   XKBHELP,KC_GRAVE,KC_COLON,KC_MINUS,KC_EXLM,KC_PLUS,M(M_LAYER_IS_AUXCHARS_RU),
 	   KC_LALT,M(ACCENT),KC_PERC,KC_LBRACKET,KC_RBRACKET,_____,_____,
 	   KC_LCTL,XXXXX,KC_UNDS,KC_LPRN,KC_RPRN,KC_NO,
-	   KC_LSHIFT,XXXXX,KC_LABK,KC_AT,KC_TILD,KC_TAB,_____,
-	   _____,_____,_____,SFT_T(KC_9),_____,
+	   KC_LSHIFT,XXXXX,KC_LABK,KC_AT,KC_TILD,KC_ENTER,_____,
+	   _____,_____,_____,SFT_T(KC_9),KC_TAB,
 	   // left thumb
 	   _____,_____,_____,
 	   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
@@ -276,7 +276,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   _____,KC_PIPE,KC_AMPR,KC_CIRC,KC_DLR,KC_QUOTE,KC_RALT,
 	   M(RU_NOSIGN),KC_LCBR,KC_RCBR,KC_HASH,KC_NO,KC_RCTRL,
 	   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_RABK,KC_NO,KC_RSHIFT,
-	   _____,_____,_____,_____,_____,
+	   KC_TAB,_____,_____,_____,_____,
 	   // right thumb
 	   _____,_____,_____,
 	   _____,_____,LT(LAYER_CONTROL,KC_ENTER)),
@@ -391,8 +391,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   		   TO(LAYER_MEDIA),XXXXX,XXXXX,XXXXX,LGUI(KC_F10),LGUI(KC_F11),M(M_LAYER_IS_CONTROL),
   		   _____,XXXXX,KC_LEFT,KC_UP,KC_RIGHT,KC_ESCAPE,XXXXX,
   		   _____,RCTL(KC_R),KC_HOME,KC_UP,KC_DOWN,KC_END,
-  		   _____,RCTL(KC_Z),RSFT(KC_TAB),KC_PGUP,KC_PGDOWN,KC_TAB,XXXXX,
-  		   TO(LAYER_KEYMACS),XXXXX,XXXXX,XXXXX,XXXXX,
+  		   _____,RCTL(KC_Z),RSFT(KC_ENTER),KC_PGUP,KC_PGDOWN,KC_ENTER,XXXXX,
+  		   TO(LAYER_KEYMACS),XXXXX,XXXXX,XXXXX,KC_TAB,
   		   // left thumb
   		   KC_SPACE,KC_ENTER,_____,_____,_____,_____,
   		   // right fingers
@@ -400,7 +400,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   		   XXXXX,LCTL(KC_V),LALT(KC_W),LCTL(KC_W),LCTL(KC_Y),XXXXX,_____,
   		   KC_DELETE,KC_LEFT,KC_RIGHT,KC_BSPACE,KC_TAB,_____,
   		   XXXXX,KC_ENTER,LCTL(KC_C),LCTL(KC_X),LCTL(KC_V),LCTL(KC_SLASH),_____,
-  		   XXXXX,XXXXX,XXXXX,XXXXX,XXXXX,
+  		   KC_TAB,XXXXX,XXXXX,XXXXX,XXXXX,
   		   // right thumb
   		   _____,_____,_____,_____,KC_TAB,KC_SPACE),
 
