@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   KC_LALT,LT(LAYER_NUMPAD,KC_Q),KC_B,KC_P,KC_F,ALGR_T(KC_G),M(M_WMJUMP),
 		   KC_LCTL,LT(LAYER_AUXCHARS,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 		   KC_LSHIFT,LSFT_T(KC_Z),KC_COMMA,KC_U,KC_K,LT(LAYER_CONTROL,KC_J),M(M_EMACS_SELECT),
-		   TG(LAYER_KEYMACS),TG(LAYER_KEYMACS),_____,M(KEYNAV),LSFT_T(KC_ENTER),
+		   TG(LAYER_KEYMACS),TG(LAYER_KEYMACS),_____,M(KEYNAV),LSFT_T(KC_TAB),
 		   // left thumb
 		   LCTL(KC_G),KC_WWW_BACK,LCTL(KC_V),
 		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_MOUSE,KC_TAB),LCTL(KC_C),
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   `  |   :  |   -  |   !  |   +  |      |           |Numpad|   *  |   ?  |   "  |   ;  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   $  |   ^  |   '  |        |
+ * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   ^  |   $  |   '  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   _  |   (  |.  )  |      |------|           |------|   №  |.  {  |   }  |   #  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -182,7 +182,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 		   // right fingers
 		   _____,KC_ASTR,KC_QUES,KC_DQUO,KC_SCOLON,KC_EQUAL,_____,
-		   _____,KC_PIPE,KC_AMPR,KC_DLR,KC_CIRC,KC_QUOTE,KC_RALT,
+		   _____,KC_PIPE,KC_AMPR,KC_CIRC,KC_DLR,KC_QUOTE,KC_RALT,
 		   KC_NO,KC_LCBR,KC_RCBR,KC_HASH,XXXXX,KC_RCTRL,
 		   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_RABK,XXXXX,KC_RSHIFT,
 		   KC_TAB,_____,_____,_____,_____,
@@ -245,7 +245,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |   `  |   :  |   -  |   !  |   +  |      |           |      |   *  |   ?  |   "  |   ;  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   ^  |   $  |   '  |        |
+ * |        |   ́  |   %  |   [  |   ]  |      |      |           |      |   |  |   &  |   $  |   ^  |   '  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |   _  |   (  |.  )  |      |------|           |------|   №  |.  {  |   }  |   #  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -273,7 +273,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	   LT(LAYER_CONTROL,KC_SPACE),_____,_____,
 	   // right fingers
 	   _____,KC_ASTR,KC_QUES,KC_LBRACKET,KC_SCOLON,KC_EQUAL,_____,
-	   _____,KC_PIPE,KC_AMPR,KC_CIRC,KC_DLR,KC_QUOTE,KC_RALT,
+	   _____,KC_PIPE,KC_AMPR,KC_DLR,KC_CIRC,KC_QUOTE,KC_RALT,
 	   M(RU_NOSIGN),KC_LCBR,KC_RCBR,KC_HASH,KC_NO,KC_RCTRL,
 	   _____,KC_ENTER,KC_EQUAL,KC_BSLASH,KC_RABK,KC_NO,KC_RSHIFT,
 	   KC_TAB,_____,_____,_____,_____,
@@ -351,7 +351,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,_____,_____,_____,
 		   // left thumb
 		   _____,_____,_____,
-		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_WM,KC_ENTER),_____,
+		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_WM,KC_TAB),_____,
 		   // right fingers
 		   _____,KC_KP_ASTERISK,KC_7,KC_8,KC_9,KC_EQUAL,KC_BSPACE,
 		   KC_NUMLOCK,KC_PIPE,KC_4,KC_5,KC_6,KC_QUOTE,KC_RALT,
@@ -360,7 +360,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,_____,_____,_____,
 		   // right thumb
 		   _____,_____,_____
-		   ,_____,LT(LAYER_WM,KC_TAB),LT(LAYER_CONTROL,KC_SPACE)),
+		   ,_____,LT(LAYER_WM,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
 
 /* Control layer for line and page navigation
  * based on https://github.com/keyboard-ergonomics/control-layer.
@@ -394,7 +394,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   		   _____,RCTL(KC_Z),RSFT(KC_ENTER),KC_PGUP,KC_PGDOWN,KC_ENTER,XXXXX,
   		   TO(LAYER_KEYMACS),XXXXX,XXXXX,XXXXX,KC_TAB,
   		   // left thumb
-  		   KC_SPACE,KC_ENTER,_____,_____,_____,_____,
+  		   KC_SPACE,KC_TAB,_____,_____,_____,_____,
   		   // right fingers
   		   LGUI(KC_F5),RGUI(KC_F6),RGUI(KC_F12),XXXXX,XXXXX,XXXXX,_____,
   		   XXXXX,LCTL(KC_V),LALT(KC_W),LCTL(KC_W),LCTL(KC_Y),XXXXX,_____,
@@ -402,7 +402,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   		   XXXXX,KC_ENTER,LCTL(KC_C),LCTL(KC_X),LCTL(KC_V),LCTL(KC_SLASH),_____,
   		   KC_TAB,XXXXX,XXXXX,XXXXX,XXXXX,
   		   // right thumb
-  		   _____,_____,_____,_____,KC_TAB,KC_SPACE),
+  		   _____,_____,_____,_____,KC_ENTER,KC_SPACE),
 
 /* Fn keys for the right hand (left hand the same as for Symbols layer)
  *
@@ -434,7 +434,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,_____,_____,_____,
 		   // left thumb 
 		   _____,_____,_____,
-		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_WM,KC_ENTER),_____,
+		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_WM,KC_TAB),_____,
 		   // right fingers
 		   _____,KC_KP_ASTERISK,KC_F7,KC_F8,KC_F9,KC_EQUAL,KC_BSPACE,
 		   KC_RALT,KC_PIPE,KC_F4,KC_F5,KC_F6,KC_KP_PLUS,KC_RALT,
@@ -443,7 +443,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   _____,_____,_____,_____,_____,
 		   // right thumb
 		   _____,_____,_____
-		   ,_____,LT(LAYER_WM,KC_TAB),LT(LAYER_CONTROL,KC_SPACE)),
+		   ,_____,LT(LAYER_WM,KC_ENTER),LT(LAYER_CONTROL,KC_SPACE)),
 
   // Media controls and Colors
   // TODO adapt more for mpv
