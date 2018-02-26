@@ -19,13 +19,12 @@ buildez:
 	docker run -e keymap=grafov -e keyboard=ergodox_ez -e subproject=defaultsp --rm -v ${PRJROOT}:/qmk:rw edasque/qmk_firmware
 
 flash: ${PRJROOT}/.build/${IMAGE}
-	@cp ${PRJROOT}/.build/${IMAGE} ~
-	~/bin/teensy ~/${IMAGE}
-	@rm -f ~/${IMAGE}
+#	@cp ${PRJROOT}/.build/${IMAGE} ~
+#	sudo ~/bin/teensy ~/${IMAGE}
+	~/bin/teensy ${PRJROOT}/.build/${IMAGE}
+#	@rm -f ~/${IMAGE}
 
 init:
 	~/bin/ez.sh
 #	~/bin/qwerty.sh
 	xset r rate 300 90
-
-
