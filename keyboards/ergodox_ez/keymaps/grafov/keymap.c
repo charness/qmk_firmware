@@ -112,11 +112,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   Esc  |   `  |   :  |   -  |   !  |   +  | Caps |           | NumLk|   *  |   ?  |   "  |   ;  |   =  |   BSP  |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   Alt  |   q  |   b  |   p  |   f  |   g  |  Nav |           |  Fn  |   v  |   w  |   l  |   y  |   '  |   Alt  |
+ * |   Alt  |   q  |   b  |   p  |   f  |   g  | LGUI |           | RGUI |   v  |   w  |   l  |   y  |   '  |   Alt  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |   Ctl  |   r  |   a  |   e  |.  n  |   s  |------|           |------|   d  |.  o  |   t  |   i  |   h  |   Ctl  |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  Shift |   z  |   ,  |   u  |   k  |   j  |      |           |      |   m  |   c  |   x  |   .  |   /  |  Shift |
+ * |--------+------+------+------+------+------| Emacs|           |  Fn  |------+------+------+------+------+--------|
+ * |  Shift |   z  |   ,  |   u  |   k  |   j  |  Sel |           |      |   m  |   c  |   x  |   .  |   /  |  Shift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | LAT  |  LAT | LGUI | RGUI | M/Tab|                                       |M/Tab | LGUI | RGUI |  RUS |  RUS |
  *   `----------------------------------'                                       `----------------------------------'
@@ -131,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_KEYMACS] \
   = KEYMAP( // left fingers
 		   KC_ESCAPE,KC_GRAVE,KC_COLON,KC_MINUS,KC_EXLM,KC_PLUS,KC_CAPSLOCK,
-		   KC_LALT,LT(LAYER_NUMPAD,KC_Q),KC_B,KC_P,KC_F,ALGR_T(KC_G),M(M_WMJUMP),
+		   KC_LALT,LT(LAYER_NUMPAD,KC_Q),KC_B,KC_P,KC_F,ALT_T(KC_G),KC_LGUI,
 		   KC_LCTL,LT(LAYER_AUXCHARS,KC_R),KC_A,KC_E,KC_N,RCTL_T(KC_S),
 		   KC_LSHIFT,LSFT_T(KC_Z),KC_COMMA,KC_U,KC_K,LT(LAYER_CONTROL,KC_J),M(M_EMACS_SELECT),
 		   TG(LAYER_KEYMACS),TG(LAYER_KEYMACS),KC_LGUI,KC_RGUI,LSFT_T(KC_TAB),
@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		   LT(LAYER_CONTROL,KC_SPACE),LT(LAYER_MOUSE,KC_TAB),KC_INS,
 		   // right finger
 		   TG(LAYER_NUMPAD),KC_ASTR,KC_QUES,KC_DQUO,KC_SCOLON,KC_EQUAL,KC_BSPACE,
-		   OSL(LAYER_WM),ALT_T(KC_V),KC_W,KC_L,KC_Y,LT(LAYER_NUMPAD,KC_QUOTE),KC_RALT,
+		   KC_RGUI,ALT_T(KC_V),KC_W,KC_L,KC_Y,LT(LAYER_NUMPAD,KC_QUOTE),KC_RALT,
 		   CTL_T(KC_D),KC_O,KC_T,KC_I,LT(LAYER_AUXCHARS,KC_H),KC_RCTL,
 		   OSL(LAYER_FN),LT(LAYER_CONTROL,KC_M),KC_C,KC_X,KC_DOT,RSFT_T(KC_SLASH),KC_RSHIFT,
 		   LCTL_T(KC_TAB),KC_LGUI,KC_RGUI,TO(LAYER_RUSSIAN),TO(LAYER_RUSSIAN),
