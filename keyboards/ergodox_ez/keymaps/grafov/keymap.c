@@ -275,7 +275,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		_____, KC_ASTR, KC_QUES, KC_LBRACKET, KC_SCOLON, KC_EQUAL, _____,
 		_____, KC_PIPE, KC_AMPR, KC_DLR, KC_CIRC, KC_QUOTE, KC_RALT,
 		M(RU_NOSIGN), KC_LCBR, KC_RCBR, KC_HASH, KC_NO, KC_RCTRL,
-		_____, KC_ENTER, KC_EQUAL, KC_BSLASH, KC_RABK, KC_NO, KC_RSHIFT,
+		_____, KC_ENTER, KC_EQUAL, KC_BSLASH, KC_RABK, KC_SLASH, KC_RSHIFT,
 		KC_TAB, _____, _____, _____, _____,
 		// right thumb
 		_____, _____, _____,
