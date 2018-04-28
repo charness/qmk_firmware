@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 * |--------+------+------+------+------+------| Emacs|           |  Fn  |------+------+------+------+------+--------|
 	 * |  Shift |   z  |   ,  |   u  |   k  |   j  |  Sel |           |      |   m  |   c  |   x  |   .  |   /  |  Shift |
 	 * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-	 *   | LAT  |  LAT |M/RGUI| APP  | M/Tab|                                       |M/Tab | APP  |M/RGUI|  RUS |  RUS |
+	 *   | LAT  |  LAT |M/RGUI| APP  | S/Tab|                                       |M/Tab | APP  |M/RGUI|  RUS |  RUS |
 	 *   `----------------------------------'                                       `----------------------------------'
 	 *                                        ,-------------.       ,-------------.
 	 *                                        | CtlG | Back |       | Frwd | CtlW |
@@ -143,7 +143,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_LGUI, ALT_T(KC_V), KC_W, KC_L, KC_Y, LT(LAYER_NUMPAD, KC_QUOTE), KC_RALT,
 		CTL_T(KC_D), KC_O, KC_T, KC_I, LT(LAYER_AUXCHARS, KC_H), KC_RCTL,
 		OSL(LAYER_FN), LT(LAYER_CONTROL, KC_M), KC_C, KC_X, KC_DOT, RSFT_T(KC_SLASH), KC_RSHIFT,
-		LCTL_T(KC_TAB), KC_APP, LALT(KC_RGUI), TO(LAYER_RUSSIAN), TO(LAYER_RUSSIAN),
+		LT(LAYER_MOUSE, KC_TAB), KC_APP, LALT(KC_RGUI), TO(LAYER_RUSSIAN), TO(LAYER_RUSSIAN),
 		// right thumb
 		KC_WWW_FORWARD, RCTL(KC_W), KC_WWW_REFRESH, // RCTL(KC_R),
 		KC_DELETE, LT(LAYER_MOUSE, KC_ENTER), LT(LAYER_CONTROL, KC_SPACE)),
