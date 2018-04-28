@@ -293,7 +293,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		_____, _____, _____, _____, _____, _____,
 		// right fingers
 		KC_MS_ACCEL2, _____, _____, _____, _____, _____, _____,
-		KC_MS_ACCEL1, _____, _____, _____, KC_MS_BTN3, _____, _____,
+		KC_MS_ACCEL1, _____, KC_MS_UP, KC_MS_DOWN, KC_MS_BTN3, _____, _____,
 		_____, KC_MS_LEFT, KC_MS_RIGHT, KC_MS_BTN1, _____, _____,
 		KC_MS_ACCEL0, KC_ENTER, KC_MS_WH_LEFT, KC_MS_WH_RIGHT, KC_MS_BTN2, _____, _____,
 		_____, KC_MS_BTN1, KC_MS_BTN3, KC_MS_BTN2, _____,
