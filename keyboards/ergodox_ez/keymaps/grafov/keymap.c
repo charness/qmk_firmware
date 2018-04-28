@@ -538,7 +538,7 @@ const uint16_t PROGMEM fn_actions[] = {
 
 
 // leaving this in place for compatibilty with old keymaps cloned and re-compiled.
-const macro_t*action_get_macro(keyrecord_t*record, uint8_t id, uint8_t opt)
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
 	if (record->event.pressed) {
 		switch(id) {
@@ -598,7 +598,7 @@ const macro_t*action_get_macro(keyrecord_t*record, uint8_t id, uint8_t opt)
 };
 
 // implements user hook on the each key press/release
-bool process_record_user(uint16_t keycode, keyrecord_t*record) {
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	static uint8_t old_layer = 0xff;
 	static bool    backrus;
 	static uint8_t layer = 0xff;
@@ -831,7 +831,7 @@ void matrix_scan_user(void) {
 
 // XXX I have stopped using it
 // Grave vs accent sign
-void dance_graveaccent (qk_tap_dance_state_t*state, void*user_data) {
+void dance_graveaccent (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 	case 1:
 		TAP(KC_GRAVE);
@@ -847,7 +847,7 @@ void dance_graveaccent (qk_tap_dance_state_t*state, void*user_data) {
 }
 
 // -/— minus or emdash
-void dance_dash (qk_tap_dance_state_t*state, void*user_data) {
+void dance_dash (qk_tap_dance_state_t *state, void *user_data) {
 	uint8_t layer = biton32(layer_state);  // get the current layer
 	switch (state->count) {
 	case 1:
@@ -870,7 +870,7 @@ void dance_dash (qk_tap_dance_state_t*state, void*user_data) {
 }
 
 // «/„ для русской раскладки
-void dance_elkilapki_left (qk_tap_dance_state_t*state, void*user_data) {
+void dance_elkilapki_left (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 	case 1:
 		register_code(LV3);
@@ -888,7 +888,7 @@ void dance_elkilapki_left (qk_tap_dance_state_t*state, void*user_data) {
 }
 
 // »/“ для русской раскладки
-void dance_elkilapki_right (qk_tap_dance_state_t*state, void*user_data) {
+void dance_elkilapki_right (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 	case 1:
 		register_code(LV3);
@@ -906,7 +906,7 @@ void dance_elkilapki_right (qk_tap_dance_state_t*state, void*user_data) {
 }
 
 // Ь/Ъ для русской раскладки
-void dance_shsig (qk_tap_dance_state_t*state, void*user_data) {
+void dance_shsig (qk_tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
 	case 1:
 		register_code(KC_M);
