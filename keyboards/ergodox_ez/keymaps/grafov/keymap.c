@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	 * |--------+------+------+------+------+------| Emacs|           |  Fn  |------+------+------+------+------+--------|
 	 * |  Shift |   z  |   ,  |   u  |   k  |   j  |  Sel |           |      |   m  |   c  |   x  |   .  |   /  |  Shift |
 	 * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-	 *   | LAT  |  LAT |M/RGUI| APP  | S/Tab|                                       |M/Tab | APP  |M/RGUI|  RUS |  RUS |
+	 *   | LAT  |QWERTY|M/RGUI| APP  | S/Tab|                                       |M/Tab | APP  |M/RGUI|  RUS |  RUS |
 	 *   `----------------------------------'                                       `----------------------------------'
 	 *                                        ,-------------.       ,-------------.
 	 *                                        | CtlG | Back |       | Frwd | CtlW |
@@ -134,7 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_LALT, LT(LAYER_NUMPAD, KC_Q), KC_B, KC_P, KC_F, ALT_T(KC_G), KC_LGUI,
 		KC_LCTL, LT(LAYER_AUXCHARS, KC_R), KC_A, KC_E, KC_N, RCTL_T(KC_S),
 		KC_LSHIFT, LSFT_T(KC_Z), KC_COMMA, KC_U, KC_K, LT(LAYER_CONTROL, KC_J), M(M_EMACS_SELECT),
-		TG(LAYER_KEYMACS), TG(LAYER_KEYMACS), LALT(KC_RGUI), KC_APP, LSFT_T(KC_TAB),
+		TG(LAYER_KEYMACS), TG(LAYER_QWERTY), LALT(KC_RGUI), KC_APP, LSFT_T(KC_TAB),
 		// left thumb
 		LCTL(KC_G), KC_WWW_BACK, LCTL(KC_V),
 		LT(LAYER_CONTROL, KC_SPACE), LT(LAYER_MOUSE, KC_TAB), KC_INS,
@@ -193,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	/* Russian layout with Keymacs compatible punctuatitons
 	 *
 	 * ,--------------------------------------------------.           ,--------------------------------------------------.
-	 * |        |  «/„ |  ч/: |   -  |   !  |  ё/+ |      |           |      |   *  |   ?  |  х/" |  ю/; |  »/“ |   BSP  |
+	 * |        |  «/„ |  ч/: |   -  |   !  |  ё/+ |CapsLk|           |      |   *  |   ?  |  х/" |  ю/; |  »/“ |   BSP  |
 	 * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
 	 * |        |   й  |   ц  |   у  |   к  |   е  |      |           |      |   н  |   г  |   ш  |   щ  |   з  |        |
 	 * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -307,7 +307,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_LALT, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_TAB,
 		KC_LCTL, KC_A, KC_S, KC_D, KC_F, KC_G,
 		KC_LSHIFT, KC_Z, KC_X, KC_C, KC_V, KC_B, _____,
-		_____, _____, _____, KC_LGUI, KC_LALT,
+		TO(LAYER_KEYMACS), _____, _____, KC_LGUI, KC_LALT,
 		// left thumb
 		_____, _____, _____,
 		KC_SPACE, KC_ENTER, _____,
