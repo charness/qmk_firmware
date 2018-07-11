@@ -33,6 +33,10 @@
 //#define LSPO_KEY KC_A
 //#define RSPC_KEY TO(2)
 
+// https://github.com/qmk/qmk_firmware/issues/1958
+#undef DEBOUNCE
+#define DEBOUNCE 5
+
 #endif
 
 
